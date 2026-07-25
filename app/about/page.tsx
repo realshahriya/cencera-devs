@@ -29,7 +29,7 @@ export default function AboutPage() {
               <br />
               <span
                 style={{
-                  background: 'linear-gradient(135deg, var(--color-rocera-accent), var(--color-rocera-gold))',
+                  background: 'linear-gradient(135deg, #aeecef 0%, #80ded9 50%, #068d9d 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <div
               className="relative p-8 sm:p-14 rounded-3xl group transition-all duration-500 hover:scale-[1.02] w-full max-w-sm sm:max-w-none flex items-center justify-center"
               style={{
-                background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, #121520 100%)',
+                background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
                 border: '1px solid var(--color-rocera-border-2)',
               }}
             >
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 className="absolute inset-0 rounded-3xl pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(ellipse at center, color-mix(in srgb, var(--color-rocera-accent) 15%, transparent) 0%, transparent 70%)',
+                    'radial-gradient(ellipse at center, rgba(6, 141, 157, 0.25) 0%, transparent 70%)',
                 }}
               />
             </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
               }}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/15 border border-[#068d9d]/30 text-[#80ded9]">
                   <Cpu size={24} />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
@@ -120,7 +120,7 @@ export default function AboutPage() {
               }}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#53599a]/20 border border-[#53599a]/40 text-[#80ded9]">
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
@@ -141,7 +141,7 @@ export default function AboutPage() {
               }}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/20 border border-[#068d9d]/40 text-[#aeecef]">
                   <HeartHandshake size={24} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
@@ -162,7 +162,7 @@ export default function AboutPage() {
               }}
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#53599a]/25 border border-[#53599a]/45 text-[#aeecef] shrink-0">
                   <Compass size={24} />
                 </div>
                 <div>
@@ -179,27 +179,21 @@ export default function AboutPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div
-          className="p-6 sm:p-10 md:p-12 rounded-3xl text-center relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, #121520 100%)',
-            border: '1px solid var(--color-rocera-border-2)',
-          }}
-        >
+        <div className="text-center max-w-3xl mx-auto py-12 px-4">
           <h2
-            className="text-xl sm:text-3xl font-extrabold tracking-tight mb-3"
+            className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4"
             style={{ color: 'var(--color-rocera-text)' }}
           >
             Want to Build With Us?
           </h2>
-          <p className="text-xs sm:text-base max-w-xl mx-auto mb-6 sm:mb-8" style={{ color: 'var(--color-rocera-muted-2)' }}>
+          <p className="text-xs sm:text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
             We&apos;re always open to partnering on ambitious engineering projects.
           </p>
           <Link
             href="/contact"
-            className="btn-butter w-full sm:w-auto inline-flex justify-center"
+            className="group btn-butter text-center inline-flex justify-center"
           >
-            Get in touch <ArrowRight size={16} />
+            Get in touch <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </div>

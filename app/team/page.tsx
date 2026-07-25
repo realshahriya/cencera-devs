@@ -48,21 +48,21 @@ export default function TeamPage() {
                     className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl flex items-center justify-center text-lg sm:text-xl font-extrabold shadow-lg transition-transform duration-300 group-hover:scale-105"
                     style={{
                       background:
-                        'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, color-mix(in srgb, var(--color-rocera-accent) 25%, var(--color-rocera-surface)) 100%)',
-                      color: 'var(--color-rocera-accent)',
+                        'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, color-mix(in srgb, var(--color-rocera-accent) 30%, var(--color-rocera-surface)) 100%)',
+                      color: 'var(--color-rocera-gold)',
                       border: '1px solid var(--color-rocera-border-2)',
                     }}
                   >
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
 
-                  <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#068d9d]/15 text-[#80ded9] border border-[#068d9d]/30">
                     ROCERA CORE
                   </span>
                 </div>
 
                 {/* Member Info */}
-                <h2 className="text-base sm:text-lg font-bold mb-1 group-hover:text-amber-300 transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                <h2 className="text-base sm:text-lg font-bold mb-1 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
                   {member.name}
                 </h2>
                 <p className="text-xs font-semibold mb-4" style={{ color: 'var(--color-rocera-accent)' }}>
@@ -70,7 +70,7 @@ export default function TeamPage() {
                 </p>
 
                 {/* Bio */}
-                <p className="text-xs leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
+                <p className="text-xs leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted-2)' }}>
                   {member.bio}
                 </p>
               </div>

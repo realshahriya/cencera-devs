@@ -1,31 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
-  --color-rocera-bg: #0a0b0f;
-  --color-rocera-surface: #111318;
-  --color-rocera-surface-2: #1a1d26;
-  --color-rocera-border: #1f2333;
-  --color-rocera-border-2: #2a2f45;
+  /* Brand Dark Theme Palette from https://coolors.co/068d9d-53599a-6d9dc5-80ded9-aeecef */
+  --color-rocera-bg: #060c13;
+  --color-rocera-surface: #0c1622;
+  --color-rocera-surface-2: #142232;
+  --color-rocera-border: #1b2e44;
+  --color-rocera-border-2: #243c58;
 
   /* Text */
-  --color-rocera-text: #e8eaf0;
-  --color-rocera-muted: #6b7280;
-  --color-rocera-muted-2: #9ca3af;
+  --color-rocera-text: #eefbfb;
+  --color-rocera-muted: #6d9dc5;
+  --color-rocera-muted-2: #9bcae5;
 
-  /* Accent — Indigo/Gold */
-  --color-rocera-accent: #6366f1;
-  --color-rocera-accent-hover: #818cf8;
-  --color-rocera-gold: #c9a84c;
-  --color-rocera-gold-muted: #a8894030;
+  /* Coolors Palette Accents */
+  --color-rocera-accent: #068d9d;           /* Deep Aqua / Vibrant Cyan */
+  --color-rocera-accent-hover: #6d9dc5;     /* Steel Soft Blue */
+  --color-rocera-accent-secondary: #53599a; /* Slate Indigo */
+  --color-rocera-gold: #80ded9;             /* Mint Aquamarine Glow */
+  --color-rocera-gold-muted: #80ded930;
+  --color-rocera-ice: #aeecef;              /* Electric Ice Blue */
 
   /* Status */
-  --color-rocera-success: #10b981;
-  --color-rocera-warning: #f59e0b;
+  --color-rocera-success: #80ded9;
+  --color-rocera-warning: #53599a;
 
   /* Fonts */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 
   /* Radii */
   --radius-sm: 6px;
@@ -55,7 +57,7 @@
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-rocera-accent) 30%, transparent);
+    background-color: color-mix(in srgb, var(--color-rocera-accent) 35%, transparent);
     color: var(--color-rocera-text);
   }
 
@@ -96,14 +98,14 @@
 @layer utilities {
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-rocera-text) 0%, var(--color-rocera-muted-2) 100%);
+    background: linear-gradient(135deg, #aeecef 0%, #6d9dc5 50%, #068d9d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, var(--color-rocera-accent) 0%, var(--color-rocera-accent-hover) 60%, var(--color-rocera-gold) 100%);
+    background: linear-gradient(135deg, #aeecef 0%, #80ded9 40%, #068d9d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -124,7 +126,7 @@
     border: 1px solid color-mix(in srgb, var(--color-rocera-border) 50%, transparent);
   }
 
-  /* Butter Buttons — Silky Liquid Ease & Ambient Glow */
+  /* Butter Buttons — Transparent Glassmorphic Butter Style */
   .btn-butter {
     display: inline-flex;
     align-items: center;
@@ -134,10 +136,12 @@
     border-radius: 0.875rem;
     font-weight: 600;
     font-size: 0.875rem;
-    color: #ffffff !important;
-    background: linear-gradient(135deg, var(--color-rocera-accent) 0%, #4f46e5 100%);
-    box-shadow: 0 4px 25px color-mix(in srgb, var(--color-rocera-accent) 35%, transparent);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #eefbfb !important;
+    background: rgba(6, 141, 157, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 25px rgba(6, 141, 157, 0.25);
+    border: 1px solid rgba(128, 222, 217, 0.35);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -148,13 +152,14 @@
 
   .btn-butter:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 35px color-mix(in srgb, var(--color-rocera-accent) 55%, transparent);
-    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 35px rgba(6, 141, 157, 0.45);
+    border-color: rgba(174, 236, 239, 0.7);
+    background: rgba(6, 141, 157, 0.38);
   }
 
   .btn-butter:active {
     transform: translateY(0) scale(0.97);
-    box-shadow: 0 2px 15px color-mix(in srgb, var(--color-rocera-accent) 30%, transparent);
+    box-shadow: 0 2px 15px rgba(6, 141, 157, 0.2);
   }
 
   .btn-butter-secondary {
@@ -167,8 +172,10 @@
     font-weight: 600;
     font-size: 0.875rem;
     color: var(--color-rocera-text);
-    background: var(--color-rocera-surface-2);
-    border: 1px solid var(--color-rocera-border-2);
+    background: rgba(20, 34, 50, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(109, 157, 197, 0.25);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -180,9 +187,9 @@
 
   .btn-butter-secondary:hover {
     transform: translateY(-2px) scale(1.02);
-    background: color-mix(in srgb, var(--color-rocera-surface-2) 85%, white);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    background: rgba(20, 34, 50, 0.75);
+    border-color: rgba(128, 222, 217, 0.4);
+    box-shadow: 0 6px 25px rgba(6, 141, 157, 0.2);
   }
 
   .btn-butter-secondary:active {
@@ -191,11 +198,11 @@
 
   /* Glow effects */
   .glow-accent {
-    box-shadow: 0 0 30px color-mix(in srgb, var(--color-rocera-accent) 20%, transparent);
+    box-shadow: 0 0 30px rgba(6, 141, 157, 0.25);
   }
 
   .glow-accent-sm {
-    box-shadow: 0 0 15px color-mix(in srgb, var(--color-rocera-accent) 15%, transparent);
+    box-shadow: 0 0 15px rgba(6, 141, 157, 0.18);
   }
 
   /* Grid pattern background */
@@ -281,7 +288,7 @@
     border-radius: 4px;
     font-family: var(--font-mono);
     font-size: 0.875em;
-    color: var(--color-rocera-accent-hover);
+    color: var(--color-rocera-gold);
   }
 
   .prose-rocera strong {

@@ -161,13 +161,13 @@ export default function ServicesPage() {
               border: '1px solid var(--color-rocera-border-2)',
             }}
           >
-            <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-indigo-500" />
+            <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-[#068d9d]" />
             <div>
               <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#068d9d]/15 border border-[#068d9d]/30 text-[#80ded9]">
                   <Code2 size={24} />
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#068d9d]/15 text-[#80ded9] border border-[#068d9d]/30">
                   CORE SERVICE
                 </span>
               </div>
@@ -180,7 +180,7 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 sm:mb-8">
                 {services[0].capabilities.map((cap) => (
                   <div key={cap} className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-rocera-text)' }}>
-                    <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                    <CheckCircle2 size={14} className="text-[#80ded9] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -204,7 +204,7 @@ export default function ServicesPage() {
             }}
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-amber-500/10 border border-amber-500/20 text-amber-400">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#53599a]/20 border border-[#53599a]/40 text-[#80ded9]">
                 <Brain size={24} />
               </div>
               <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
@@ -216,7 +216,7 @@ export default function ServicesPage() {
               <div className="space-y-2 mb-6">
                 {services[1].capabilities.slice(0, 4).map((cap) => (
                   <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                    <CheckCircle2 size={13} className="text-amber-400 shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#80ded9] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -240,7 +240,7 @@ export default function ServicesPage() {
             }}
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-purple-500/10 border border-purple-500/20 text-purple-400">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/20 border border-[#068d9d]/40 text-[#aeecef]">
                 <Link2 size={24} />
               </div>
               <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
@@ -252,7 +252,7 @@ export default function ServicesPage() {
               <div className="space-y-2 mb-6">
                 {services[2].capabilities.slice(0, 4).map((cap) => (
                   <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                    <CheckCircle2 size={13} className="text-purple-400 shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#aeecef] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -277,7 +277,7 @@ export default function ServicesPage() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-6">
               <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-cyan-500/10 text-cyan-400">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#068d9d]/15 text-[#80ded9]">
                   <Cloud size={20} />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold mb-2" style={{ color: 'var(--color-rocera-text)' }}>
@@ -289,7 +289,7 @@ export default function ServicesPage() {
               </div>
 
               <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-amber-500/10 text-amber-400">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#53599a]/25 text-[#aeecef]">
                   <Palette size={20} />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold mb-2" style={{ color: 'var(--color-rocera-text)' }}>
@@ -319,7 +319,7 @@ export default function ServicesPage() {
             }}
           >
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-3 bg-[#80ded9]/10 text-[#80ded9] border border-[#80ded9]/25">
                 <Shield size={13} />
                 <span>ZERO-TRUST ARCHITECTURE</span>
               </div>
@@ -338,25 +338,19 @@ export default function ServicesPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div
-          className="p-6 sm:p-10 md:p-12 rounded-3xl text-center relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, #121520 100%)',
-            border: '1px solid var(--color-rocera-border-2)',
-          }}
-        >
+        <div className="text-center max-w-3xl mx-auto py-12 px-4">
           <h2
-            className="text-xl sm:text-3xl font-extrabold tracking-tight mb-3"
+            className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4"
             style={{ color: 'var(--color-rocera-text)' }}
           >
             Have a High-Stakes Project in Mind?
           </h2>
-          <p className="text-xs sm:text-base max-w-xl mx-auto mb-6 sm:mb-8" style={{ color: 'var(--color-rocera-muted-2)' }}>
+          <p className="text-xs sm:text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
             We&apos;d love to learn about your architectural requirements. Tell us what you&apos;re building.
           </p>
           <Link
             href="/contact"
-            className="group btn-butter w-full sm:w-auto inline-flex justify-center"
+            className="group btn-butter text-center inline-flex justify-center"
           >
             Start a Conversation
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

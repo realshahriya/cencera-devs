@@ -92,7 +92,7 @@ export function TechStackSection() {
             }}
           >
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-indigo-400 font-semibold uppercase mb-2 block">
+              <span className="text-xs font-mono tracking-widest text-[#80ded9] font-semibold uppercase mb-2 block">
                 FRONTEND & FULL-STACK ENGINE
               </span>
               <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
@@ -104,20 +104,21 @@ export function TechStackSection() {
               {frontendTech.map(({ name, icon: Icon, brandColor }) => (
                 <div
                   key={name}
-                  className="p-4 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5"
+                  className="p-4 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
                   style={{
                     background: 'var(--color-rocera-surface-2)',
                     border: '1px solid var(--color-rocera-border)',
-                    transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
                   onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '70'
+                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
                   }}
                   onMouseLeave={(e) => {
                     ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                   }}
                 >
-                  <Icon size={26} className="mb-2" style={{ color: brandColor }} />
+                  <Icon size={28} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
                   <span className="text-xs font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
                     {name}
                   </span>
@@ -135,7 +136,7 @@ export function TechStackSection() {
             }}
           >
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-amber-400 font-semibold uppercase mb-2 block">
+              <span className="text-xs font-mono tracking-widest text-[#aeecef] font-semibold uppercase mb-2 block">
                 AI & MACHINE LEARNING
               </span>
               <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
@@ -147,14 +148,21 @@ export function TechStackSection() {
               {aiTech.map(({ name, icon: Icon, brandColor }) => (
                 <div
                   key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5"
+                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
                   style={{
                     background: 'var(--color-rocera-surface-2)',
                     border: '1px solid var(--color-rocera-border)',
-                    transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                   }}
                 >
-                  <Icon size={24} className="mb-2" style={{ color: brandColor }} />
+                  <Icon size={26} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
                   <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
                     {name}
                   </span>
@@ -172,7 +180,7 @@ export function TechStackSection() {
             }}
           >
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-emerald-400 font-semibold uppercase mb-2 block">
+              <span className="text-xs font-mono tracking-widest text-[#80ded9] font-semibold uppercase mb-2 block">
                 SYSTEMS & WEB3
               </span>
               <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
@@ -184,14 +192,21 @@ export function TechStackSection() {
               {web3Tech.map(({ name, icon: Icon, brandColor }) => (
                 <div
                   key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5"
+                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
                   style={{
                     background: 'var(--color-rocera-surface-2)',
                     border: '1px solid var(--color-rocera-border)',
-                    transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                   }}
                 >
-                  <Icon size={24} className="mb-2" style={{ color: brandColor }} />
+                  <Icon size={26} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
                   <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
                     {name}
                   </span>
@@ -209,7 +224,7 @@ export function TechStackSection() {
             }}
           >
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-cyan-400 font-semibold uppercase mb-2 block">
+              <span className="text-xs font-mono tracking-widest text-[#6d9dc5] font-semibold uppercase mb-2 block">
                 CLOUD, DEVOPS & DATA INFRASTRUCTURE
               </span>
               <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
@@ -221,14 +236,21 @@ export function TechStackSection() {
               {cloudTech.map(({ name, icon: Icon, brandColor }) => (
                 <div
                   key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5"
+                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
                   style={{
                     background: 'var(--color-rocera-surface-2)',
                     border: '1px solid var(--color-rocera-border)',
-                    transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                  onMouseEnter={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
+                  }}
+                  onMouseLeave={(e) => {
+                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
+                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                   }}
                 >
-                  <Icon size={22} className="mb-2" style={{ color: brandColor }} />
+                  <Icon size={24} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
                   <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
                     {name}
                   </span>

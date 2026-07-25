@@ -1,14 +1,13 @@
 "use client"
 
 import {
-  Code2,
   Brain,
+  Code2,
   Link2,
   Cloud,
   Palette,
   Shield,
   Zap,
-  Database,
   ArrowRight,
 } from 'lucide-react'
 import Link from 'next/link'
@@ -47,71 +46,29 @@ export function ServicesSection() {
           </Link>
         </div>
 
-        {/* Bento Box Grid */}
+        {/* Distinct Bento Box Grid 2: Horizontal Tiered Structure (3 Top Equal Cards + 1 Full-Width Bottom Banner) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Bento 1 — Featured AI & Full Stack Hero Card (Spans 2 Columns) */}
+          {/* Top Row Card 1 — AI Systems & RAG Pipelines */}
           <div
-            className="group relative rounded-3xl p-8 sm:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
+            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
+              background: 'linear-gradient(180deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
               border: '1px solid var(--color-rocera-border-2)',
             }}
           >
-            <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-[90px] pointer-events-none opacity-20 bg-indigo-500" />
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+            <div>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/15 border border-[#068d9d]/30 text-[#80ded9]">
                 <Brain size={24} />
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                FLAGSHIP CORE
-              </span>
-            </div>
-
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
-                AI Systems & Full Stack Engineering
-              </h3>
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                LLM integration, fine-tuning, RAG pipelines, production ML inference engines, and web/mobile platforms built with Next.js, PyTorch, and FastAPI.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
-              {['PyTorch', 'LangChain', 'Next.js 16', 'FastAPI', 'Redis', 'PostgreSQL'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-lg text-xs font-mono"
-                  style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Bento 2 — Web3 & Blockchain Card */}
-          <div
-            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
-            }}
-          >
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-amber-500/10 border border-amber-500/20 text-amber-400">
-              <Link2 size={24} />
-            </div>
-
-            <div className="mb-6">
               <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
-                Blockchain & Protocol Protocols
+                AI Systems & Fine-Tuning
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
-                Smart contracts, DeFi vaults, zero-knowledge proofs, and Web3 infrastructure across EVM and Solana chains.
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted-2)' }}>
+                LLM integration, fine-tuning, RAG vector pipelines, and sub-50ms inference engines built with PyTorch and FastAPI.
               </p>
             </div>
-
-            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
-              {['Solidity', 'Rust', 'Anchor', 'Ethereum', 'Solana'].map((tag) => (
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10">
+              {['PyTorch', 'RAG', 'LangChain', 'FastAPI'].map((tag) => (
                 <span
                   key={tag}
                   className="px-2.5 py-1 rounded-lg text-xs font-mono"
@@ -123,29 +80,27 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Bento 3 — Cloud & DevOps Architecture Card */}
+          {/* Top Row Card 2 — Full Stack Web & Mobile */}
           <div
             className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
+              background: 'linear-gradient(180deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
+              border: '1px solid var(--color-rocera-border-2)',
             }}
           >
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-              <Cloud size={24} />
-            </div>
-
-            <div className="mb-6">
+            <div>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#53599a]/20 border border-[#53599a]/40 text-[#80ded9]">
+                <Code2 size={24} />
+              </div>
               <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
-                Cloud & DevOps Orchestration
+                Full Stack Web Apps
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
-                Infrastructure as Code (IaC), Kubernetes auto-scaling, CI/CD deployment pipelines, and zero-trust cloud security.
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted-2)' }}>
+                High-concurrency web and mobile platforms engineered with Next.js 16, TypeScript, WebSockets, and PostgreSQL.
               </p>
             </div>
-
-            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
-              {['AWS', 'Kubernetes', 'Terraform', 'Docker'].map((tag) => (
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10">
+              {['Next.js 16', 'TypeScript', 'React 19', 'PostgreSQL'].map((tag) => (
                 <span
                   key={tag}
                   className="px-2.5 py-1 rounded-lg text-xs font-mono"
@@ -157,48 +112,86 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Bento 4 — Security, UI/UX & API Architecture (Spans 2 Columns) */}
+          {/* Top Row Card 3 — Web3 & Blockchain Protocols */}
           <div
-            className="group relative rounded-3xl p-8 sm:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
+            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
+            style={{
+              background: 'linear-gradient(180deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
+              border: '1px solid var(--color-rocera-border-2)',
+            }}
+          >
+            <div>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/20 border border-[#068d9d]/40 text-[#aeecef]">
+                <Link2 size={24} />
+              </div>
+              <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
+                Web3 & Blockchain Protocols
+              </h3>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted-2)' }}>
+                Solidity and Rust smart contracts, zero-knowledge proofs, and DeFi vaults across EVM and Solana chains.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10">
+              {['Solidity', 'Rust', 'Anchor', 'Solana'].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2.5 py-1 rounded-lg text-xs font-mono"
+                  style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Row Wide Banner Card (Spans All 3 Columns on Desktop) */}
+          <div
+            className="group relative rounded-3xl p-8 sm:p-10 overflow-hidden flex flex-col lg:col-span-3 transition-all duration-500 hover:scale-[1.005]"
             style={{
               background: 'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, var(--color-rocera-surface) 100%)',
               border: '1px solid var(--color-rocera-border-2)',
             }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-emerald-500/10 text-emerald-400">
+            <div className="flex items-center justify-between mb-6">
+              <span className="text-xs font-mono tracking-wider uppercase text-[#80ded9] flex items-center gap-1.5">
+                <Cloud size={14} /> CLOUD, SECURITY & INFRASTRUCTURE CAPABILITIES
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-2">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#068d9d]/15 text-[#80ded9]">
+                  <Cloud size={20} />
+                </div>
+                <h4 className="text-base font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
+                  Cloud & DevOps
+                </h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
+                  Kubernetes cluster management, Terraform IaC, and Docker containerization.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#53599a]/25 text-[#aeecef]">
                   <Shield size={20} />
                 </div>
-                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--color-rocera-text)' }}>
+                <h4 className="text-base font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
                   Security & Audits
                 </h4>
-                <p className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
-                  Smart contract audits & zero-trust pen-testing.
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
+                  Zero-trust penetration testing and smart contract static audits.
                 </p>
               </div>
 
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-amber-500/10 text-amber-400">
-                  <Palette size={20} />
-                </div>
-                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--color-rocera-text)' }}>
-                  UI/UX Craftsmanship
-                </h4>
-                <p className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
-                  Pixel-perfect interfaces & design systems.
-                </p>
-              </div>
-
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-purple-500/10 text-purple-400">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#6d9dc5]/20 text-[#6d9dc5]">
                   <Zap size={20} />
                 </div>
-                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--color-rocera-text)' }}>
-                  API Systems
+                <h4 className="text-base font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
+                  gRPC & GraphQL APIs
                 </h4>
-                <p className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
-                  gRPC, GraphQL & RESTful microservices.
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
+                  High-throughput gRPC streaming and distributed telemetry backends.
                 </p>
               </div>
             </div>

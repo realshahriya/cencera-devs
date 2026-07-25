@@ -38,7 +38,7 @@ export default async function HackathonsPage() {
           {/* Vertical Glowing Axis Line */}
           <div
             className="absolute left-3 sm:left-4 md:left-8 top-0 bottom-0 w-0.5"
-            style={{ background: 'linear-gradient(180deg, var(--color-rocera-accent) 0%, var(--color-rocera-gold) 50%, var(--color-rocera-border) 100%)' }}
+            style={{ background: 'linear-gradient(180deg, #068d9d 0%, #80ded9 50%, var(--color-rocera-border) 100%)' }}
           />
 
           <div className="flex flex-col gap-8 sm:gap-12">
@@ -46,7 +46,7 @@ export default async function HackathonsPage() {
               <article key={h.id} className="relative pl-8 sm:pl-12 md:pl-24 group">
                 {/* Timeline Pulsing Node */}
                 <div
-                  className="absolute left-[7px] sm:left-[11px] md:left-[27px] top-5 w-3.5 h-3.5 rounded-full border-2 border-indigo-400 bg-indigo-500 shadow-[0_0_12px_rgba(99,102,241,0.8)] transition-transform duration-300 group-hover:scale-125"
+                  className="absolute left-[7px] sm:left-[11px] md:left-[27px] top-5 w-3.5 h-3.5 rounded-full border-2 border-[#80ded9] bg-[#068d9d] shadow-[0_0_12px_rgba(6,141,157,0.8)] transition-transform duration-300 group-hover:scale-125"
                 />
 
                 {/* Event Card */}
@@ -59,12 +59,12 @@ export default async function HackathonsPage() {
                 >
                   {/* Date & Location */}
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-indigo-400">
+                    <div className="flex items-center gap-1.5 text-xs font-mono text-[#80ded9]">
                       <Calendar size={13} />
                       <span>{new Date(h.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-gray-400">
+                    <div className="flex flex-wrap items-center gap-3 text-xs font-mono style={{ color: 'var(--color-rocera-muted-2)' }}">
                       <span className="flex items-center gap-1">
                         <MapPin size={13} /> {h.location}
                       </span>
@@ -82,11 +82,11 @@ export default async function HackathonsPage() {
                       {h.awards.map((award) => (
                         <div
                           key={award.category}
-                          className="flex flex-wrap items-center gap-1.5 px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-amber-400/10 text-amber-300 border border-amber-400/25"
+                          className="flex flex-wrap items-center gap-1.5 px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-[#80ded9]/10 text-[#80ded9] border border-[#80ded9]/25"
                         >
-                          <Trophy size={12} className="text-amber-400 shrink-0" />
+                          <Trophy size={12} className="text-[#80ded9] shrink-0" />
                           <span>{award.place === '1st' ? '🥇 1st Place' : award.place === '2nd' ? '🥈 2nd Place' : '🏅 Finalist'} — {award.category}</span>
-                          {award.prize && <span className="font-mono text-amber-200">({award.prize})</span>}
+                          {award.prize && <span className="font-mono text-[#aeecef]">({award.prize})</span>}
                         </div>
                       ))}
                     </div>
@@ -94,7 +94,7 @@ export default async function HackathonsPage() {
 
                   {/* Event Title & Description */}
                   <h2
-                    className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-3 group-hover:text-amber-300 transition-colors"
+                    className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-3 group-hover:text-[#80ded9] transition-colors"
                     style={{ color: 'var(--color-rocera-text)' }}
                   >
                     {h.name}

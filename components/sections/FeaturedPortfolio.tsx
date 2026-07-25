@@ -6,9 +6,9 @@ import { ExternalLink, GitBranch, ArrowRight, Star } from 'lucide-react'
 import type { Project } from '@/types/portfolio'
 
 const statusColors = {
-  completed: { bg: '#10b98115', text: '#10b981', label: 'Completed' },
-  'in-progress': { bg: '#f59e0b15', text: '#f59e0b', label: 'In Progress' },
-  archived: { bg: '#6b728015', text: '#6b7280', label: 'Archived' },
+  completed: { bg: '#80ded915', text: '#80ded9', label: 'Completed' },
+  'in-progress': { bg: '#6d9dc515', text: '#6d9dc5', label: 'In Progress' },
+  archived: { bg: '#53599a15', text: '#53599a', label: 'Archived' },
 }
 
 export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
@@ -67,7 +67,7 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
                 border: '1px solid var(--color-rocera-border-2)',
               }}
             >
-              <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-indigo-500" />
+              <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-[#068d9d]" />
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
@@ -82,8 +82,8 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
                   </span>
 
                   {spotlight.stargazersCount !== undefined && (
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-black/40 border border-white/10 text-amber-400">
-                      <Star size={12} className="fill-amber-400" />
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-black/40 border border-white/10 text-[#80ded9]">
+                      <Star size={12} className="fill-[#80ded9]" />
                       <span>{spotlight.stargazersCount} Stars</span>
                     </div>
                   )}
@@ -91,7 +91,7 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   <div className={spotlight.image && !imgError ? 'lg:col-span-7' : 'lg:col-span-12'}>
-                    <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 group-hover:text-amber-300 transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                    <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
                       {spotlight.title}
                     </h3>
                     <p className="text-xs sm:text-base leading-relaxed mb-6 sm:mb-8" style={{ color: 'var(--color-rocera-muted-2)' }}>
@@ -169,14 +169,14 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
                     {statusColors[second.status].label}
                   </span>
                   {second.stargazersCount !== undefined && (
-                    <div className="flex items-center gap-1 text-xs font-mono text-amber-400">
-                      <Star size={12} className="fill-amber-400" />
+                    <div className="flex items-center gap-1 text-xs font-mono text-[#80ded9]">
+                      <Star size={12} className="fill-[#80ded9]" />
                       <span>{second.stargazersCount}</span>
                     </div>
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 group-hover:text-amber-300 transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
                   {second.title}
                 </h3>
                 <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
@@ -234,9 +234,9 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
                   >
                     {statusColors[third.status].label}
                   </span>
-                  <span className="text-xs font-mono text-gray-500">{new Date(third.date).getFullYear()}</span>
+                  <span className="text-xs font-mono text-gray-400">{new Date(third.date).getFullYear()}</span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-amber-300 transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
                   {third.title}
                 </h3>
                 <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
