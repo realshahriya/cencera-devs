@@ -1,6 +1,16 @@
 'use server'
 
 import { z } from 'zod'
+import dns from 'dns'
+
+// Force Node.js to resolve IPv4 first on Vercel/cloud environments (prevents Telegram API IPv6 connection hanging)
+try {
+  if (typeof dns.setDefaultResultOrder === 'function') {
+    dns.setDefaultResultOrder('ipv4first')
+  }
+} catch {
+  // Ignore
+}
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -44,6 +54,47 @@ function escapeHtml(text: string): string {
     .replace(/>/g, '&gt;')
 }
 
+async function sendTelegramMessage(
+  tgBotToken: string,
+  chatId: string,
+  topicId: string | undefined,
+  tgText: string,
+  tgApiBase: string
+): Promise<boolean> {
+  try {
+    const payload: Record<string, any> = {
+      chat_id: chatId,
+      text: tgText,
+      parse_mode: 'HTML',
+      disable_web_page_preview: true,
+    }
+
+    if (topicId && !isNaN(Number(topicId))) {
+      payload.message_thread_id = Number(topicId)
+    }
+
+    // 10 second timeout with IPv4 preference
+    const res = await fetch(`${tgApiBase}/bot${tgBotToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(10000),
+    })
+
+    if (res.ok) {
+      console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId}!`)
+      return true
+    }
+
+    const errJson = await res.json().catch(() => null)
+    console.error(`Telegram Bot sendMessage failed for chat ${chatId}:`, errJson)
+    return false
+  } catch (err: any) {
+    console.error(`Telegram Bot fetch exception for chat ${chatId}:`, err.message || err)
+    return false
+  }
+}
+
 export async function submitContact(
   formData: ContactFormData,
   ip: string = 'unknown'
@@ -75,64 +126,43 @@ export async function submitContact(
   console.log(`  Budget: ${budget ?? 'Not specified'}`)
   console.log(`  Message: ${message}`)
 
-  // 1. Telegram Bot Notification (requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env)
+  // 1. Telegram Bot Notification
   const tgBotToken = process.env.TELEGRAM_BOT_TOKEN
   const tgChatId = process.env.TELEGRAM_CHAT_ID
   const tgTopicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID
   const tgApiBase = (process.env.TELEGRAM_API_BASE || 'https://api.telegram.org').replace(/\/$/, '')
 
   if (tgBotToken && tgChatId) {
-    try {
-      const tgText = `🚀 <b>New CENCERA Project Inquiry</b>\n\n` +
-        `<b>👤 Name:</b> ${escapeHtml(name)}\n` +
-        `<b>📧 Email:</b> ${escapeHtml(email)}\n` +
-        `<b>💰 Budget:</b> ${escapeHtml(budget || 'Not specified')}\n` +
-        `<b>📌 Subject:</b> ${escapeHtml(subject)}\n\n` +
-        `<b>💬 Message:</b>\n${escapeHtml(message)}\n\n` +
-        `<i>Sent via cencera.xyz contact form //</i>`
+    const tgText = `🚀 <b>New CENCERA Project Inquiry</b>\n\n` +
+      `<b>👤 Name:</b> ${escapeHtml(name)}\n` +
+      `<b>📧 Email:</b> ${escapeHtml(email)}\n` +
+      `<b>💰 Budget:</b> ${escapeHtml(budget || 'Not specified')}\n` +
+      `<b>📌 Subject:</b> ${escapeHtml(subject)}\n\n` +
+      `<b>💬 Message:</b>\n${escapeHtml(message)}\n\n` +
+      `<i>Sent via cencera.xyz contact form //</i>`
 
-      const payload: Record<string, any> = {
-        chat_id: tgChatId,
-        text: tgText,
-        parse_mode: 'HTML',
-        disable_web_page_preview: true,
-      }
+    // Await fetch so Vercel Serverless environment never freezes context before delivery
+    let sent = await sendTelegramMessage(tgBotToken, tgChatId, tgTopicId, tgText, tgApiBase)
 
-      // If sending to a specific Telegram Forum Topic Thread
-      if (tgTopicId && !isNaN(Number(tgTopicId))) {
-        payload.message_thread_id = Number(tgTopicId)
-      }
-
-      // Dispatch fetch with a 5-second timeout so network issues never block the UI response
-      fetch(`${tgApiBase}/bot${tgBotToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(5000),
-      })
-        .then(async (res) => {
-          if (!res.ok) {
-            const errJson = await res.json().catch(() => null)
-            console.error('Telegram Bot sendMessage returned non-200:', errJson)
-          } else {
-            console.log('✅ Telegram Bot notification delivered successfully to group/topic!')
-          }
-        })
-        .catch((err) => {
-          console.error('Telegram Bot fetch timeout/error:', err.message || err)
-        })
-    } catch (err) {
-      console.error('Telegram Bot fetch exception:', err)
+    // Fallback: If chat ID format failed, try alternate prefix variant
+    if (!sent && tgChatId.startsWith('-1002')) {
+      const altChatId = '-100' + tgChatId.slice(5)
+      console.log(`Attempting fallback to alternate chat_id: ${altChatId}`)
+      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText, tgApiBase)
+    } else if (!sent && tgChatId.startsWith('-100') && !tgChatId.startsWith('-1002')) {
+      const altChatId = '-1002' + tgChatId.slice(4)
+      console.log(`Attempting fallback to alternate chat_id: ${altChatId}`)
+      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText, tgApiBase)
     }
   } else {
-    console.warn('⚠️ Telegram Bot config missing: Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env.local')
+    console.warn('⚠️ Telegram Bot config missing: Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env.local / Vercel')
   }
 
-  // 2. Discord Webhook Notification (optional fallback if configured)
+  // 2. Discord Webhook Notification (optional)
   const discordWebhook = process.env.DISCORD_WEBHOOK_URL
   if (discordWebhook) {
     try {
-      fetch(discordWebhook, {
+      await fetch(discordWebhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -151,7 +181,7 @@ export async function submitContact(
             },
           ],
         }),
-        signal: AbortSignal.timeout(5000),
+        signal: AbortSignal.timeout(4000),
       }).catch((err) => console.error('Discord webhook failed:', err.message || err))
     } catch (err) {
       console.error('Discord webhook exception:', err)
