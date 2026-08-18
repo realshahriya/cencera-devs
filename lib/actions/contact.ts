@@ -1,6 +1,7 @@
 'use server'
 
 import { z } from 'zod'
+import { Bot } from 'grammy'
 import dns from 'dns'
 
 // Force Node.js to resolve IPv4 first on Vercel/cloud environments
@@ -60,49 +61,30 @@ async function sendTelegramMessage(
   topicId: string | undefined,
   tgText: string
 ): Promise<boolean> {
-  const customBase = process.env.TELEGRAM_API_BASE
-  const endpoints = customBase
-    ? [customBase.replace(/\/$/, '')]
-    : [
-        'https://api.telegram.org',
-        'https://telegg.ru/orig',
-      ]
+  try {
+    const customBase = process.env.TELEGRAM_API_BASE
+    const bot = new Bot(
+      tgBotToken,
+      customBase ? { client: { apiRoot: customBase } } : undefined
+    )
 
-  const payload: Record<string, any> = {
-    chat_id: chatId,
-    text: tgText,
-    parse_mode: 'HTML',
-    disable_web_page_preview: true,
-  }
-
-  if (topicId && !isNaN(Number(topicId))) {
-    payload.message_thread_id = Number(topicId)
-  }
-
-  for (const baseUrl of endpoints) {
-    try {
-      console.log(`Sending Telegram message to chat ${chatId} (topic ${topicId ?? 'none'}) via ${baseUrl}...`)
-      const res = await fetch(`${baseUrl}/bot${tgBotToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(5000), // 5 second timeout per endpoint
-      })
-
-      const data = await res.json().catch(() => null)
-
-      if (res.ok && data?.ok) {
-        console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId} (topic ${topicId}) via ${baseUrl}!`)
-        return true
-      }
-
-      console.error(`Telegram Bot API error for chat ${chatId} via ${baseUrl}:`, data || res.statusText)
-    } catch (err: any) {
-      console.error(`Telegram Bot endpoint ${baseUrl} request timeout/error for chat ${chatId}:`, err.message || err)
+    const options: Record<string, any> = {
+      parse_mode: 'HTML',
+      link_preview_options: { is_disabled: true },
     }
-  }
 
-  return false
+    if (topicId && !isNaN(Number(topicId))) {
+      options.message_thread_id = Number(topicId)
+    }
+
+    console.log(`Sending Telegram message to chat ${chatId} (topic ${topicId ?? 'none'})...`)
+    await bot.api.sendMessage(chatId, tgText, options)
+    console.log(`✅ grammy: Telegram Bot message delivered successfully to chat ${chatId}!`)
+    return true
+  } catch (err: any) {
+    console.error(`grammy: Telegram Bot error for chat ${chatId}:`, err.message || err)
+    return false
+  }
 }
 
 export async function submitContact(
@@ -136,7 +118,7 @@ export async function submitContact(
   console.log(`  Budget: ${budget ?? 'Not specified'}`)
   console.log(`  Message: ${message}`)
 
-  // 1. Telegram Bot Notification
+  // 1. Telegram Bot Notification via grammy SDK
   const tgBotToken = process.env.TELEGRAM_BOT_TOKEN
   const tgChatId = process.env.TELEGRAM_CHAT_ID
   const tgTopicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID
