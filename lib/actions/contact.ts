@@ -3,7 +3,7 @@
 import { z } from 'zod'
 import dns from 'dns'
 
-// Force Node.js to resolve IPv4 first on Vercel/cloud environments (prevents Telegram API IPv6 connection hanging)
+// Force Node.js to resolve IPv4 first on Vercel/cloud environments
 try {
   if (typeof dns.setDefaultResultOrder === 'function') {
     dns.setDefaultResultOrder('ipv4first')
@@ -58,41 +58,50 @@ async function sendTelegramMessage(
   tgBotToken: string,
   chatId: string,
   topicId: string | undefined,
-  tgText: string,
-  tgApiBase: string
+  tgText: string
 ): Promise<boolean> {
-  try {
-    const payload: Record<string, any> = {
-      chat_id: chatId,
-      text: tgText,
-      parse_mode: 'HTML',
-      disable_web_page_preview: true,
-    }
+  const customBase = process.env.TELEGRAM_API_BASE
+  const endpoints = customBase
+    ? [customBase.replace(/\/$/, '')]
+    : [
+        'https://api.telegram.org',
+        'https://telegram-bot-api.vercel.app',
+      ]
 
-    if (topicId && !isNaN(Number(topicId))) {
-      payload.message_thread_id = Number(topicId)
-    }
-
-    // 10 second timeout with IPv4 preference
-    const res = await fetch(`${tgApiBase}/bot${tgBotToken}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(10000),
-    })
-
-    if (res.ok) {
-      console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId}!`)
-      return true
-    }
-
-    const errJson = await res.json().catch(() => null)
-    console.error(`Telegram Bot sendMessage failed for chat ${chatId}:`, errJson)
-    return false
-  } catch (err: any) {
-    console.error(`Telegram Bot fetch exception for chat ${chatId}:`, err.message || err)
-    return false
+  const payload: Record<string, any> = {
+    chat_id: chatId,
+    text: tgText,
+    parse_mode: 'HTML',
+    disable_web_page_preview: true,
   }
+
+  if (topicId && !isNaN(Number(topicId))) {
+    payload.message_thread_id = Number(topicId)
+  }
+
+  for (const base of endpoints) {
+    try {
+      console.log(`Sending Telegram message to chat ${chatId} via ${base}...`)
+      const res = await fetch(`${base}/bot${tgBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(4000),
+      })
+
+      if (res.ok) {
+        console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId} via ${base}!`)
+        return true
+      }
+
+      const errJson = await res.json().catch(() => null)
+      console.error(`Telegram Bot sendMessage non-200 from ${base}:`, errJson)
+    } catch (err: any) {
+      console.error(`Telegram Bot endpoint ${base} timeout/error:`, err.message || err)
+    }
+  }
+
+  return false
 }
 
 export async function submitContact(
@@ -130,7 +139,6 @@ export async function submitContact(
   const tgBotToken = process.env.TELEGRAM_BOT_TOKEN
   const tgChatId = process.env.TELEGRAM_CHAT_ID
   const tgTopicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID
-  const tgApiBase = (process.env.TELEGRAM_API_BASE || 'https://api.telegram.org').replace(/\/$/, '')
 
   if (tgBotToken && tgChatId) {
     const tgText = `🚀 <b>New CENCERA Project Inquiry</b>\n\n` +
@@ -141,18 +149,17 @@ export async function submitContact(
       `<b>💬 Message:</b>\n${escapeHtml(message)}\n\n` +
       `<i>Sent via cencera.xyz contact form //</i>`
 
-    // Await fetch so Vercel Serverless environment never freezes context before delivery
-    let sent = await sendTelegramMessage(tgBotToken, tgChatId, tgTopicId, tgText, tgApiBase)
+    let sent = await sendTelegramMessage(tgBotToken, tgChatId, tgTopicId, tgText)
 
-    // Fallback: If chat ID format failed, try alternate prefix variant
+    // Automated chat_id variant fallback (-1004433... <-> -10024433...)
     if (!sent && tgChatId.startsWith('-1002')) {
       const altChatId = '-100' + tgChatId.slice(5)
-      console.log(`Attempting fallback to alternate chat_id: ${altChatId}`)
-      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText, tgApiBase)
+      console.log(`Attempting fallback chat_id: ${altChatId}`)
+      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText)
     } else if (!sent && tgChatId.startsWith('-100') && !tgChatId.startsWith('-1002')) {
       const altChatId = '-1002' + tgChatId.slice(4)
-      console.log(`Attempting fallback to alternate chat_id: ${altChatId}`)
-      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText, tgApiBase)
+      console.log(`Attempting fallback chat_id: ${altChatId}`)
+      await sendTelegramMessage(tgBotToken, altChatId, tgTopicId, tgText)
     }
   } else {
     console.warn('⚠️ Telegram Bot config missing: Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env.local / Vercel')
