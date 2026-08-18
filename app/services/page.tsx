@@ -2,12 +2,13 @@ import {
   Code2,
   Brain,
   Link2,
-  Cloud,
-  Palette,
-  Shield,
+  ShieldCheck,
   Zap,
   ArrowRight,
   CheckCircle2,
+  Coins,
+  TrendingUp,
+  Globe,
 } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -15,172 +16,163 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Full Stack, AI, Blockchain, Cloud & DevOps, Security, and UI/UX design services offered by Rocera.',
+    'DeFi & dApp Development, Smart Contracts, Token & Coin Creation, CEX/DEX Exchange Listing, AI Apps, Web Development, and Smart Contract Audits by CENCERA.',
 }
 
 const services = [
   {
-    icon: Code2,
-    title: 'Full Stack Development',
-    description:
-      'End-to-end web and mobile applications built with modern frameworks, clean APIs, and production-ready infrastructure.',
-    capabilities: [
-      'Next.js 16 & React 19 apps',
-      'TypeScript end-to-end',
-      'Real-time WebSockets & SSE',
-      'PostgreSQL & Redis optimization',
-      'Tailwind CSS & Framer Motion',
-      'Serverless & Edge deployments',
-    ],
-    tags: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'TypeScript'],
-    featured: true,
-  },
-  {
-    icon: Brain,
-    title: 'AI Engineering',
-    description:
-      'LLM integration, fine-tuning, RAG pipelines, computer vision, and production ML systems that scale.',
-    capabilities: [
-      'Custom RAG vector search',
-      'LLM fine-tuning & prompt design',
-      'PyTorch model deployment',
-      'FastAPI & TorchServe backends',
-      'Agentic workflow automation',
-      'Sub-50ms inference optimization',
-    ],
-    tags: ['PyTorch', 'LangChain', 'OpenAI', 'Gemini', 'FastAPI'],
-    featured: true,
-  },
-  {
+    id: 'defi-dapps',
     icon: Link2,
-    title: 'Blockchain Engineering',
+    title: 'DeFi & dApp Engineering',
     description:
-      'Smart contracts, DeFi protocols, NFT platforms, and Web3 infrastructure across EVM and Solana.',
+      'Decentralized exchanges (DEX), yield vaults, liquidity pools, staking protocols, and responsive Web3 dApps across EVM, Solana, and Move chains.',
     capabilities: [
-      'Solidity & Rust smart contracts',
-      'Anchor framework on Solana',
-      'DeFi liquidity & yield vaults',
-      'ERC-4626 & ERC-721 protocols',
-      'Zero-knowledge proof integration',
-      'Web3 frontend dApp integrations',
+      'DEX & Automated Market Makers (AMM)',
+      'Staking & Yield Farming Vaults',
+      'ERC-4626 & Custom Liquidity Pools',
+      'Web3 Wallet Connect & dApp Interfaces',
+      'Solidity & Solana Anchor Integration',
+      'Zero-Knowledge Proofs (ZK)',
     ],
-    tags: ['Solidity', 'Rust', 'Hardhat', 'Anchor', 'Web3'],
+    tags: ['DeFi', 'dApp', 'Solidity', 'Rust', 'Anchor', 'Web3'],
+    featured: true,
   },
   {
-    icon: Cloud,
-    title: 'Cloud & DevOps',
+    id: 'smart-contracts',
+    icon: Code2,
+    title: 'Smart Contracts Development',
     description:
-      'Infrastructure as code, CI/CD pipelines, Kubernetes orchestration, and cost-optimized cloud architecture.',
+      'Production-ready smart contract architecture, token standards, upgradable proxy patterns, and custom protocol logic built with Solidity, Rust, and Yul.',
     capabilities: [
-      'AWS & GCP cloud setup',
-      'Terraform & Pulumi IaC',
-      'Kubernetes cluster management',
-      'Docker containerization',
-      'GitHub Actions CI/CD',
-      'Cost optimization audits',
+      'Custom EVM & Solana Smart Contracts',
+      'Upgradable Proxy Architecture',
+      'ERC-20, ERC-721, ERC-1155 Protocols',
+      'Gas Optimization & Assembly (Yul)',
+      'On-Chain Governance & DAOs',
+      'Automated Contract Testing (Foundry)',
     ],
-    tags: ['AWS', 'Kubernetes', 'Terraform', 'Docker'],
+    tags: ['Solidity', 'Rust', 'Yul', 'Foundry', 'Hardhat', 'ERC-20'],
+    featured: true,
   },
   {
-    icon: Palette,
-    title: 'UI/UX Design & Craftsmanship',
+    id: 'tokens-exchange-listing',
+    icon: TrendingUp,
+    title: 'Tokens/Coins Creation & CEX / DEX Listing',
     description:
-      'Premium interfaces grounded in usability research. Design systems, prototypes, and pixel-perfect implementation.',
+      'End-to-end tokenomics, token contract development, liquidity pool setup, market making, and guaranteed listing execution on top CEX & DEX exchanges.',
     capabilities: [
-      'Figma design systems',
-      'Interactive prototyping',
-      'Responsive dark-mode UI',
-      'Micro-animations & CSS keyframes',
-      'Accessibility (WCAG 2.1)',
-      'Design-to-code fidelity',
+      'Tokenomics & Vesting Schedules',
+      'Custom Token Smart Contracts',
+      'DEX Liquidity Pool Launching',
+      'Top-Tier CEX Exchange Listing Execution',
+      'Automated Market Making (AMM) Setup',
+      'CoinGecko & CoinMarketCap Listing',
     ],
-    tags: ['Figma', 'Framer', 'Design Systems', 'Micro-interactions'],
+    tags: ['Tokenomics', 'CEX Listing', 'DEX Launch', 'Liquidity', 'Uniswap', 'Raydium'],
+    featured: true,
   },
   {
-    icon: Shield,
-    title: 'Security & Audit Consulting',
+    id: 'ai-apps',
+    icon: Brain,
+    title: 'AI-Powered Apps & Web Development',
     description:
-      'Smart contract audits, penetration testing, secure architecture reviews, and zero-trust threat modeling.',
+      'LLM integrations, autonomous AI agents, custom RAG vector search, fine-tuning, computer vision, and sub-50ms ML inference backends for web & mobile.',
     capabilities: [
-      'Smart contract static audits',
-      'Penetration testing & OWASP',
-      'Zero-trust API security',
-      'Role-based access control',
-      'Vulnerability remediation',
-      'Compliance & data protection',
+      'Autonomous AI Agent Workflows',
+      'Custom RAG Vector Search Databases',
+      'LLM Fine-Tuning & Prompt Engineering',
+      'PyTorch & TorchServe Inference Engine',
+      'Sub-50ms API Latency Optimization',
+      'Gemini & OpenAI API Integration',
     ],
-    tags: ['Audit', 'Pentest', 'OWASP', 'ZK', 'Zero-Trust'],
+    tags: ['AI Agents', 'RAG', 'PyTorch', 'FastAPI', 'OpenAI', 'Gemini'],
   },
   {
-    icon: Zap,
-    title: 'API & Microservices Architecture',
+    id: 'web-development',
+    icon: Globe,
+    title: 'Normal & Enterprise Web Development',
     description:
-      'RESTful, gRPC, and GraphQL APIs built for performance, high concurrency, and long-term maintainability.',
+      'High-performance web applications, enterprise software, and mobile apps engineered with Next.js 16, React 19, TypeScript, and scalable cloud infrastructure.',
     capabilities: [
-      'gRPC high-throughput streams',
-      'GraphQL & Apollo Gateway',
-      'OpenAPI 3.0 documentation',
-      'Distributed telemetry & tracing',
-      'Rate limiting & DDoS protection',
-      'Cross-platform SDK generation',
+      'Next.js 16 & React 19 App Router',
+      'TypeScript End-to-End Type Safety',
+      'Real-Time WebSockets & SSE Streams',
+      'PostgreSQL, Redis & Prisma Backends',
+      'Pixel-Perfect Responsive UI/UX',
+      'Serverless & Edge Deployment',
     ],
-    tags: ['REST', 'GraphQL', 'gRPC', 'OpenAPI', 'Telemetry'],
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind'],
+  },
+  {
+    id: 'smart-contract-audits',
+    icon: ShieldCheck,
+    title: 'Smart Contract Audits & Security',
+    description:
+      'Comprehensive smart contract static audits, formal verification, zero-trust penetration testing, logic flaw analysis, and official audit reports.',
+    capabilities: [
+      'Smart Contract Static Analysis',
+      'Slither & Mythril Vulnerability Scans',
+      'Formal Verification & Invariants',
+      'Zero-Trust Penetration Testing',
+      'Reentrancy & Logic Flaw Remediation',
+      'Official Audit PDF Certificate Reports',
+    ],
+    tags: ['Audit', 'Penetration Testing', 'Security', 'OWASP', 'Zero-Trust', 'Foundry'],
   },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-rocera-bg)' }}>
+    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
       <div className="container-rocera">
         {/* Header */}
         <div className="max-w-2xl mb-12 sm:mb-20">
           <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: 'var(--color-rocera-accent)' }}
+            className="text-xs font-semibold uppercase tracking-widest mb-3 text-[#92DCE5]"
           >
-            What We Do
+            What We Do //
           </p>
           <h1
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4"
+            style={{ color: 'var(--color-cencera-text)' }}
           >
             Services & Engineering
           </h1>
-          <p className="text-sm sm:text-lg leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
-            We cover the full spectrum of modern software engineering — from architecture design through to production deployment and beyond.
+          <p className="text-sm sm:text-lg leading-relaxed" style={{ color: 'var(--color-cencera-muted-2)' }}>
+            We cover the full spectrum of high-stakes software engineering — from DeFi, dApps, Tokens, and Exchange Listings to AI Apps, Web Development, and Smart Contract Audits.
           </p>
         </div>
 
-        {/* Bento Box Grid Layout */}
+        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 sm:mb-24">
-          {/* Service 1 — Full Stack Hero Card (Spans 2 Columns) */}
+          {/* Service 1 — DeFi & dApps */}
           <article
             className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, var(--color-rocera-surface-2) 100%)',
-              border: '1px solid var(--color-rocera-border-2)',
+              background: 'linear-gradient(135deg, var(--color-cencera-surface) 0%, var(--color-cencera-surface-2) 100%)',
+              border: '1px solid var(--color-cencera-border-2)',
             }}
           >
-            <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-[#068d9d]" />
+            <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-[#92DCE5]" />
             <div>
               <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#068d9d]/15 border border-[#068d9d]/30 text-[#80ded9]">
-                  <Code2 size={24} />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#92DCE5]/15 border border-[#92DCE5]/30 text-[#92DCE5]">
+                  <Link2 size={24} />
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#068d9d]/15 text-[#80ded9] border border-[#068d9d]/30">
-                  CORE SERVICE
+                <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#92DCE5]/15 text-[#92DCE5] border border-[#92DCE5]/30">
+                  FLAGSHIP SERVICE
                 </span>
               </div>
-              <h2 className="text-xl sm:text-3xl font-extrabold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
+              <h2 className="text-xl sm:text-3xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
                 {services[0].title}
               </h2>
-              <p className="text-xs sm:text-base leading-relaxed max-w-xl mb-6 sm:mb-8" style={{ color: 'var(--color-rocera-muted-2)' }}>
+              <p className="text-xs sm:text-base leading-relaxed max-w-xl mb-6 sm:mb-8" style={{ color: 'var(--color-cencera-muted-2)' }}>
                 {services[0].description}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 sm:mb-8">
                 {services[0].capabilities.map((cap) => (
-                  <div key={cap} className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-rocera-text)' }}>
-                    <CheckCircle2 size={14} className="text-[#80ded9] shrink-0" />
+                  <div key={cap} className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-cencera-text)' }}>
+                    <CheckCircle2 size={14} className="text-[#92DCE5] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -188,35 +180,35 @@ export default function ServicesPage() {
             </div>
             <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-6 border-t border-white/10">
               {services[0].tags.map((tag) => (
-                <span key={tag} className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono" style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}>
+                <span key={tag} className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
                   {tag}
                 </span>
               ))}
             </div>
           </article>
 
-          {/* Service 2 — AI Engineering Bento Box */}
+          {/* Service 2 — Smart Contracts */}
           <article
             className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
+              background: 'var(--color-cencera-surface)',
+              border: '1px solid var(--color-cencera-border)',
             }}
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#53599a]/20 border border-[#53599a]/40 text-[#80ded9]">
-                <Brain size={24} />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#7DCD85]/20 border border-[#7DCD85]/40 text-[#7DCD85]">
+                <Code2 size={24} />
               </div>
-              <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
+              <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
                 {services[1].title}
               </h2>
-              <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
+              <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-cencera-muted-2)' }}>
                 {services[1].description}
               </p>
               <div className="space-y-2 mb-6">
                 {services[1].capabilities.slice(0, 4).map((cap) => (
-                  <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                    <CheckCircle2 size={13} className="text-[#80ded9] shrink-0" />
+                  <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                    <CheckCircle2 size={13} className="text-[#7DCD85] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
@@ -224,135 +216,184 @@ export default function ServicesPage() {
             </div>
             <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
               {services[1].tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-mono" style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}>
+                <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
                   {tag}
                 </span>
               ))}
             </div>
           </article>
 
-          {/* Service 3 — Blockchain Bento Box */}
+          {/* Service 3 — Tokens / Coins & Exchange Listing (Spans 2 Cols) */}
           <article
-            className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
+            className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
+              background: 'linear-gradient(135deg, var(--color-cencera-surface-2) 0%, var(--color-cencera-surface) 100%)',
+              border: '1px solid var(--color-cencera-border-2)',
             }}
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#068d9d]/20 border border-[#068d9d]/40 text-[#aeecef]">
-                <Link2 size={24} />
+              <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#88D5B5]/20 border border-[#88D5B5]/40 text-[#88D5B5]">
+                  <TrendingUp size={24} />
+                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#88D5B5]/15 text-[#88D5B5] border border-[#88D5B5]/30">
+                  CEX & DEX EXECUTION
+                </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-rocera-text)' }}>
+              <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
                 {services[2].title}
               </h2>
-              <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
+              <p className="text-xs sm:text-base leading-relaxed max-w-xl mb-6" style={{ color: 'var(--color-cencera-muted-2)' }}>
                 {services[2].description}
               </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
+                {services[2].capabilities.map((cap) => (
+                  <div key={cap} className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-cencera-text)' }}>
+                    <CheckCircle2 size={14} className="text-[#88D5B5] shrink-0" />
+                    <span>{cap}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
+              {services[2].tags.map((tag) => (
+                <span key={tag} className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          {/* Service 4 — AI Apps */}
+          <article
+            className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
+            style={{
+              background: 'var(--color-cencera-surface)',
+              border: '1px solid var(--color-cencera-border)',
+            }}
+          >
+            <div>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#92DCE5]/20 border border-[#92DCE5]/40 text-[#92DCE5]">
+                <Brain size={24} />
+              </div>
+              <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
+                {services[3].title}
+              </h2>
+              <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                {services[3].description}
+              </p>
               <div className="space-y-2 mb-6">
-                {services[2].capabilities.slice(0, 4).map((cap) => (
-                  <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                    <CheckCircle2 size={13} className="text-[#aeecef] shrink-0" />
+                {services[3].capabilities.slice(0, 4).map((cap) => (
+                  <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                    <CheckCircle2 size={13} className="text-[#92DCE5] shrink-0" />
                     <span>{cap}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
-              {services[2].tags.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-mono" style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}>
+              {services[3].tags.map((tag) => (
+                <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
                   {tag}
                 </span>
               ))}
             </div>
           </article>
 
-          {/* Service 4 & 5 — Cloud, UI/UX & Security Wide Bento Card (Spans 2 Columns) */}
+          {/* Service 5 — Normal & Enterprise Web Development */}
+          <article
+            className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
+            style={{
+              background: 'var(--color-cencera-surface)',
+              border: '1px solid var(--color-cencera-border)',
+            }}
+          >
+            <div>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#7DCD85]/20 border border-[#7DCD85]/40 text-[#7DCD85]">
+                <Globe size={24} />
+              </div>
+              <h2 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
+                {services[4].title}
+              </h2>
+              <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                {services[4].description}
+              </p>
+              <div className="space-y-2 mb-6">
+                {services[4].capabilities.slice(0, 4).map((cap) => (
+                  <div key={cap} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                    <CheckCircle2 size={13} className="text-[#7DCD85] shrink-0" />
+                    <span>{cap}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+              {services[4].tags.map((tag) => (
+                <span key={tag} className="px-2.5 py-1 rounded-lg text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          {/* Service 6 — Smart Contract Audits & Security (Spans 2 Cols) */}
           <article
             className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
             style={{
-              background: 'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, var(--color-rocera-surface) 100%)',
-              border: '1px solid var(--color-rocera-border-2)',
+              background: 'linear-gradient(135deg, var(--color-cencera-surface-2) 0%, var(--color-cencera-bg) 100%)',
+              border: '1px solid var(--color-cencera-border-2)',
             }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-6">
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#068d9d]/15 text-[#80ded9]">
-                  <Cloud size={20} />
+            <div>
+              <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#92DCE5]/20 border border-[#92DCE5]/40 text-[#92DCE5]">
+                  <ShieldCheck size={24} />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold mb-2" style={{ color: 'var(--color-rocera-text)' }}>
-                  {services[3].title}
-                </h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
-                  {services[3].description}
-                </p>
+                <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#92DCE5]/15 text-[#92DCE5] border border-[#92DCE5]/30">
+                  SECURITY AUDIT CERTIFICATION
+                </span>
               </div>
-
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#53599a]/25 text-[#aeecef]">
-                  <Palette size={20} />
-                </div>
-                <h3 className="text-base sm:text-lg font-bold mb-2" style={{ color: 'var(--color-rocera-text)' }}>
-                  {services[4].title}
-                </h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'var(--color-rocera-muted)' }}>
-                  {services[4].description}
-                </p>
+              <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
+                {services[5].title}
+              </h2>
+              <p className="text-xs sm:text-base leading-relaxed max-w-xl mb-6" style={{ color: 'var(--color-cencera-muted-2)' }}>
+                {services[5].description}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
+                {services[5].capabilities.map((cap) => (
+                  <div key={cap} className="flex items-center gap-2 text-xs font-medium" style={{ color: 'var(--color-cencera-text)' }}>
+                    <CheckCircle2 size={14} className="text-[#92DCE5] shrink-0" />
+                    <span>{cap}</span>
+                  </div>
+                ))}
               </div>
             </div>
-
             <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
-              {['AWS', 'Kubernetes', 'Terraform', 'Figma', 'Framer', 'Design Systems'].map((tag) => (
-                <span key={tag} className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono" style={{ background: 'var(--color-rocera-bg)', color: 'var(--color-rocera-muted-2)' }}>
+              {services[5].tags.map((tag) => (
+                <span key={tag} className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono" style={{ background: 'var(--color-cencera-bg)', color: 'var(--color-cencera-muted-2)' }}>
                   {tag}
                 </span>
               ))}
             </div>
-          </article>
-
-          {/* Service 6 & 7 — API & Security Banner Bento Box (Spans 3 Columns) */}
-          <article
-            className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 lg:col-span-3 transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'linear-gradient(135deg, var(--color-rocera-surface) 0%, var(--color-rocera-bg) 100%)',
-              border: '1px solid var(--color-rocera-border-2)',
-            }}
-          >
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-3 bg-[#80ded9]/10 text-[#80ded9] border border-[#80ded9]/25">
-                <Shield size={13} />
-                <span>ZERO-TRUST ARCHITECTURE</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: 'var(--color-rocera-text)' }}>
-                Security Audits & API Gateway Engineering
-              </h3>
-              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                Zero-trust penetration testing, smart contract audits, gRPC streaming, and GraphQL microservices designed for absolute reliability under attack vectors.
-              </p>
-            </div>
-
-            <Link href="/contact" className="btn-butter text-xs !py-3 !px-6 text-center shrink-0 w-full sm:w-auto">
-              Schedule Security Review
-            </Link>
           </article>
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center max-w-3xl mx-auto py-12 px-4">
           <h2
-            className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="text-2xl sm:text-4xl font-black tracking-tighter mb-4"
+            style={{ color: 'var(--color-cencera-text)' }}
           >
             Have a High-Stakes Project in Mind?
           </h2>
-          <p className="text-xs sm:text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
-            We&apos;d love to learn about your architectural requirements. Tell us what you&apos;re building.
+          <p className="text-xs sm:text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ color: 'var(--color-cencera-muted-2)' }}>
+            We&apos;d love to learn about your technical requirements. Tell us what you&apos;re building.
           </p>
           <Link
             href="/contact"
             className="group btn-butter text-center inline-flex justify-center"
           >
-            Start a Conversation
+            Start a Conversation //
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

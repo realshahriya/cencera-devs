@@ -1,29 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Dark Theme Palette from https://coolors.co/068d9d-53599a-6d9dc5-80ded9-aeecef */
-  --color-rocera-bg: #060c13;
-  --color-rocera-surface: #0c1622;
-  --color-rocera-surface-2: #142232;
-  --color-rocera-border: #1b2e44;
-  --color-rocera-border-2: #243c58;
+  /* Official CENCERA Brand Palette copied from CENCERA-main */
+  --color-cencera-bg: #111111;
+  --color-cencera-surface: #1A1A1A;
+  --color-cencera-surface-2: #222222;
+  --color-cencera-border: rgba(255, 255, 255, 0.08);
+  --color-cencera-border-2: rgba(255, 255, 255, 0.12);
 
-  /* Text */
-  --color-rocera-text: #eefbfb;
-  --color-rocera-muted: #6d9dc5;
-  --color-rocera-muted-2: #9bcae5;
+  /* Text Colors */
+  --color-cencera-text: #F0F0F0;
+  --color-cencera-muted: #D4D4D4;
+  --color-cencera-muted-2: #ADADAD;
 
-  /* Coolors Palette Accents */
-  --color-rocera-accent: #068d9d;           /* Deep Aqua / Vibrant Cyan */
-  --color-rocera-accent-hover: #6d9dc5;     /* Steel Soft Blue */
-  --color-rocera-accent-secondary: #53599a; /* Slate Indigo */
-  --color-rocera-gold: #80ded9;             /* Mint Aquamarine Glow */
-  --color-rocera-gold-muted: #80ded930;
-  --color-rocera-ice: #aeecef;              /* Electric Ice Blue */
+  /* Cencera Brand Accents */
+  --color-cencera-neon: #92DCE5;       /* Primary Electric Aqua */
+  --color-cencera-secondary: #7DCD85;  /* Emerald Safe Green */
+  --color-cencera-mint: #88D5B5;       /* Accent Mint */
+  --color-cencera-soft: #F3E8EE;       /* Soft White/Pink */
+  --color-cencera-void: #111111;       /* Deep Void */
+
+  /* Legacy aliases for backward compatibility */
+  --color-rocera-bg: var(--color-cencera-bg);
+  --color-rocera-surface: var(--color-cencera-surface);
+  --color-rocera-surface-2: var(--color-cencera-surface-2);
+  --color-rocera-border: var(--color-cencera-border);
+  --color-rocera-border-2: var(--color-cencera-border-2);
+  --color-rocera-text: var(--color-cencera-text);
+  --color-rocera-muted: var(--color-cencera-muted);
+  --color-rocera-muted-2: var(--color-cencera-muted-2);
+  --color-rocera-accent: #92DCE5;
+  --color-rocera-accent-hover: #88D5B5;
+  --color-rocera-accent-secondary: #7DCD85;
+  --color-rocera-gold: #92DCE5;
+  --color-rocera-ice: #F3E8EE;
 
   /* Status */
-  --color-rocera-success: #80ded9;
-  --color-rocera-warning: #53599a;
+  --color-rocera-success: #7DCD85;
+  --color-rocera-warning: #92DCE5;
 
   /* Fonts */
   --font-sans: var(--font-sans), "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -39,54 +53,65 @@
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
-    border-color: var(--color-rocera-border);
+    border-color: var(--color-cencera-border);
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-width: thin;
+    scrollbar-color: #92DCE5 #111111;
   }
 
   body {
-    background-color: var(--color-rocera-bg);
-    color: var(--color-rocera-text);
+    background-color: #111111;
+    color: #F0F0F0;
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
+    /* CENCERA dot grid pattern */
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 24px 24px;
+    cursor: auto !important; /* Native default cursor */
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-rocera-accent) 35%, transparent);
-    color: var(--color-rocera-text);
+    background: rgba(146, 220, 229, 0.25);
+    color: #92DCE5;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-rocera-bg);
+    background: #111111;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-rocera-border-2);
-    border-radius: 3px;
+    background: #92DCE5;
+    border-radius: 2px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-rocera-accent);
+    background: #88D5B5;
   }
 
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   img {
@@ -96,37 +121,138 @@
 }
 
 @layer utilities {
+  /* CENCERA Section Tag */
+  .section-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #92DCE5;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #92DCE5;
+    box-shadow: 0 0 8px #92DCE5;
+  }
+
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, #aeecef 0%, #6d9dc5 50%, #068d9d 100%);
+    background: linear-gradient(135deg, #F3E8EE 0%, #92DCE5 50%, #7DCD85 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, #aeecef 0%, #80ded9 40%, #068d9d 100%);
+    background: linear-gradient(135deg, #92DCE5 0%, #88D5B5 50%, #7DCD85 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Glass effect */
-  .glass {
-    background: color-mix(in srgb, var(--color-rocera-surface) 80%, transparent);
+  /* ── CENCERA Shared Glass Cards (Copied from CENCERA-main) ───────────── */
+  .glass-card {
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(146, 220, 229, 0.3);
+  }
+
+  .glass-card--neon {
+    box-shadow: inset 0 0 80px rgba(146, 220, 229, 0.04);
+  }
+
+  .card-surface {
+    background: rgba(17, 17, 17, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--color-rocera-border);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .bg-void {
+    background: #111111;
+  }
+
+  .bg-surface {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glass effect */
+  .glass {
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .glass-subtle {
-    background: color-mix(in srgb, var(--color-rocera-surface-2) 60%, transparent);
+    background: rgba(34, 34, 34, 0.65);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid color-mix(in srgb, var(--color-rocera-border) 50%, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Butter Buttons — Transparent Glassmorphic Butter Style */
+  /* ── CENCERA Buttons (Copied from CENCERA-main) ────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: #92DCE5;
+    color: #111111;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(146, 220, 229, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #F0F0F0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Cencera Transparent Glassmorphic Butter Style */
   .btn-butter {
     display: inline-flex;
     align-items: center;
@@ -134,14 +260,14 @@
     gap: 0.5rem;
     padding: 0.875rem 2rem;
     border-radius: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
-    color: #eefbfb !important;
-    background: rgba(6, 141, 157, 0.22);
+    color: #ffffff !important;
+    background: rgba(146, 220, 229, 0.22);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 25px rgba(6, 141, 157, 0.25);
-    border: 1px solid rgba(128, 222, 217, 0.35);
+    box-shadow: 0 4px 25px rgba(146, 220, 229, 0.25);
+    border: 1px solid rgba(146, 220, 229, 0.4);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -152,14 +278,14 @@
 
   .btn-butter:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 35px rgba(6, 141, 157, 0.45);
-    border-color: rgba(174, 236, 239, 0.7);
-    background: rgba(6, 141, 157, 0.38);
+    box-shadow: 0 8px 35px rgba(146, 220, 229, 0.45);
+    border-color: rgba(146, 220, 229, 0.8);
+    background: rgba(146, 220, 229, 0.35);
   }
 
   .btn-butter:active {
     transform: translateY(0) scale(0.97);
-    box-shadow: 0 2px 15px rgba(6, 141, 157, 0.2);
+    box-shadow: 0 2px 15px rgba(146, 220, 229, 0.2);
   }
 
   .btn-butter-secondary {
@@ -171,12 +297,12 @@
     border-radius: 0.875rem;
     font-weight: 600;
     font-size: 0.875rem;
-    color: var(--color-rocera-text);
-    background: rgba(20, 34, 50, 0.45);
+    color: #F0F0F0;
+    background: rgba(34, 34, 34, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(109, 157, 197, 0.25);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -187,40 +313,101 @@
 
   .btn-butter-secondary:hover {
     transform: translateY(-2px) scale(1.02);
-    background: rgba(20, 34, 50, 0.75);
-    border-color: rgba(128, 222, 217, 0.4);
-    box-shadow: 0 6px 25px rgba(6, 141, 157, 0.2);
+    background: rgba(34, 34, 34, 0.8);
+    border-color: rgba(146, 220, 229, 0.4);
+    box-shadow: 0 6px 25px rgba(146, 220, 229, 0.2);
   }
 
   .btn-butter-secondary:active {
     transform: translateY(0) scale(0.97);
   }
 
+  /* ── CENCERA Capability & Process Cards ────────────────────────────────── */
+  .cap-card {
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cap-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(146, 220, 229, 0.3);
+  }
+
+  .cap-card__num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #92DCE5;
+    opacity: 0.85;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .pstep {
+    padding: clamp(1.2rem, 2.5vw, 2rem);
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+
+  .pstep:hover {
+    transform: translateY(-2px);
+    border-color: rgba(146, 220, 229, 0.3);
+  }
+
+  .pstep__num {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #92DCE5;
+    opacity: 0.65;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .metric__num {
+    font-family: var(--font-mono);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    display: block;
+    color: #92DCE5;
+    text-shadow: 0 0 30px rgba(146, 220, 229, 0.25);
+  }
+
+  .metric__label {
+    font-size: 0.72rem;
+    color: #D4D4D4;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
   /* Glow effects */
   .glow-accent {
-    box-shadow: 0 0 30px rgba(6, 141, 157, 0.25);
+    box-shadow: 0 0 30px rgba(146, 220, 229, 0.25);
   }
 
   .glow-accent-sm {
-    box-shadow: 0 0 15px rgba(6, 141, 157, 0.18);
+    box-shadow: 0 0 15px rgba(146, 220, 229, 0.18);
   }
 
   /* Grid pattern background */
   .grid-pattern {
     background-image:
-      linear-gradient(var(--color-rocera-border) 1px, transparent 1px),
-      linear-gradient(to right, var(--color-rocera-border) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
-  }
-
-  /* Noise texture overlay */
-  .noise-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
   }
 
   /* Section padding */
@@ -251,100 +438,5 @@
       padding-left: 2.5rem;
       padding-right: 2.5rem;
     }
-  }
-
-  /* Prose styles for markdown */
-  .prose-rocera {
-    color: var(--color-rocera-muted-2);
-    max-width: 72ch;
-  }
-
-  .prose-rocera h1,
-  .prose-rocera h2,
-  .prose-rocera h3,
-  .prose-rocera h4 {
-    color: var(--color-rocera-text);
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .prose-rocera p {
-    margin-bottom: 1rem;
-  }
-
-  .prose-rocera ul,
-  .prose-rocera ol {
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .prose-rocera li {
-    margin-bottom: 0.25rem;
-  }
-
-  .prose-rocera code {
-    background: var(--color-rocera-surface-2);
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-    color: var(--color-rocera-gold);
-  }
-
-  .prose-rocera strong {
-    color: var(--color-rocera-text);
-    font-weight: 600;
-  }
-
-  .prose-rocera a {
-    color: var(--color-rocera-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .prose-rocera hr {
-    border-color: var(--color-rocera-border);
-    margin: 2rem 0;
-  }
-
-  /* Animate utilities */
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.6s ease-out both;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out both;
-  }
-
-  .shimmer {
-    background: linear-gradient(
-      90deg,
-      var(--color-rocera-surface) 0%,
-      var(--color-rocera-surface-2) 50%,
-      var(--color-rocera-surface) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
   }
 }

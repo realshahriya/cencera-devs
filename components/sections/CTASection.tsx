@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
 export function CTASection() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  // Binary Code Matrix Backdrop matching Hero section design language
+  // Binary Code Matrix Backdrop matching CENCERA design language (Softened Intensity)
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -31,15 +31,17 @@ export function CTASection() {
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        const randomOpacity = Math.random() * 0.25 + 0.12
+        const randomOpacity = Math.random() * 0.18 + 0.06
         const char = Math.random() > 0.5 ? '1' : '0'
 
         if (char === '1') {
-          const brightAlpha = Math.min(0.38, Math.max(0.22, randomOpacity * 0.8 + 0.16))
-          ctx.fillStyle = `rgba(128, 222, 217, ${brightAlpha})`
+          // Softened '1's (subtle cyan around 0.16 opacity)
+          const brightAlpha = Math.min(0.22, Math.max(0.10, randomOpacity * 0.6 + 0.08))
+          ctx.fillStyle = `rgba(146, 220, 229, ${brightAlpha})`
         } else {
-          const dimAlpha = Math.min(0.14, Math.max(0.05, randomOpacity * 0.3 + 0.04))
-          ctx.fillStyle = `rgba(6, 141, 157, ${dimAlpha})`
+          // Softened '0's (very dim dark mint around 0.04 opacity)
+          const dimAlpha = Math.min(0.07, Math.max(0.02, randomOpacity * 0.2 + 0.02))
+          ctx.fillStyle = `rgba(125, 205, 133, ${dimAlpha})`
         }
 
         ctx.fillText(char, c * charW, r * charH)
@@ -53,37 +55,37 @@ export function CTASection() {
       className="relative overflow-hidden py-24 sm:py-32 md:py-40 text-center px-4 sm:px-6"
       style={{
         background:
-          'linear-gradient(180deg, var(--color-rocera-surface) 0%, var(--color-rocera-bg) 50%, var(--color-rocera-surface) 100%)',
-        borderTop: '1px solid var(--color-rocera-border)',
-        borderBottom: '1px solid var(--color-rocera-border)',
+          'linear-gradient(180deg, var(--color-cencera-surface) 0%, var(--color-cencera-bg) 50%, var(--color-cencera-surface) 100%)',
+        borderTop: '1px solid var(--color-cencera-border)',
+        borderBottom: '1px solid var(--color-cencera-border)',
       }}
     >
-      {/* 1. Seamless Binary Code Matrix Background Canvas */}
+      {/* 1. Seamless Binary Code Matrix Background Canvas (Softened) */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-50"
       />
 
-      {/* 2. Soft Radial Spotlight Glow behind CTA Headline */}
+      {/* 2. Soft Ambient Radial Spotlight Glow behind CTA Headline */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] md:w-[750px] h-[250px] sm:h-[350px] md:h-[400px] rounded-full blur-[120px] sm:blur-[150px] pointer-events-none opacity-25"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] md:w-[750px] h-[250px] sm:h-[350px] md:h-[400px] rounded-full blur-[120px] sm:blur-[150px] pointer-events-none opacity-10"
         style={{
-          background: 'radial-gradient(circle, #80ded9 0%, #068d9d 50%, transparent 75%)',
+          background: 'radial-gradient(circle, #92DCE5 0%, #7DCD85 50%, transparent 75%)',
         }}
       />
 
-      {/* Seamless Main Content (No Box Container) */}
+      {/* Seamless Main Content */}
       <div className="container-rocera relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Top Tag Pill */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-mono mb-6 border border-white/10 glass shadow-lg">
-          <Compass size={13} style={{ color: '#80ded9' }} />
-          <span style={{ color: '#80ded9' }}>LET&apos;S BUILD TOGETHER</span>
+          <Compass size={13} style={{ color: '#92DCE5' }} />
+          <span style={{ color: '#92DCE5' }}>LET&apos;S BUILD TOGETHER //</span>
         </div>
 
         {/* Headline */}
         <h2
-          className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] text-balance"
-          style={{ color: 'var(--color-rocera-text)' }}
+          className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-6 leading-[1.15] text-balance"
+          style={{ color: 'var(--color-cencera-text)' }}
         >
           Ready to Start Your Project?
         </h2>
@@ -91,7 +93,7 @@ export function CTASection() {
         {/* Description */}
         <p
           className="text-sm sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed px-2 sm:px-0"
-          style={{ color: 'var(--color-rocera-muted-2)' }}
+          style={{ color: 'var(--color-cencera-muted-2)' }}
         >
           Tell us what you&apos;re building. We&apos;ll get back to you within 24 hours with a clear engineering path forward.
         </p>
@@ -103,7 +105,7 @@ export function CTASection() {
             id="cta-start-project"
             className="group btn-butter text-center"
           >
-            Start a Project
+            Start a Project //
             <ArrowRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-1"

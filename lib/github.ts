@@ -5,7 +5,7 @@ export const GITHUB_PROJECTS_REPO = process.env.GITHUB_PROJECTS_REPO || `${GITHU
 
 const headers: HeadersInit = {
   Accept: 'application/vnd.github.v3+json',
-  'User-Agent': 'RoceraApp/1.0',
+  'User-Agent': 'CenceraApp/1.0',
   ...(GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {}),
 }
 

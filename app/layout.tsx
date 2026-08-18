@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { CustomCursor } from '@/components/ui/CustomCursor'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -20,46 +19,47 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rocera.dev'),
+  metadataBase: new URL('https://cencera.xyz'),
   title: {
-    default: 'Rocera — Engineering Software That Lasts',
-    template: '%s | Rocera',
+    default: 'CENCERA — Trust & Safety Infrastructure',
+    template: '%s | CENCERA',
   },
   description:
-    'Rocera is a premium technology agency. We partner with startups, founders, and organizations to design and build reliable software, AI systems, blockchain solutions, and modern digital products.',
+    'CENCERA is a high-stakes technology agency and trust & safety infrastructure engineering firm. We partner with founders and enterprises to design AI systems, Web3 protocols, cloud infrastructure, and enterprise software.',
   keywords: [
-    'software engineering',
+    'cencera',
+    'trust and safety infrastructure',
+    'software engineering agency',
     'AI engineering',
-    'blockchain development',
+    'blockchain security',
     'full stack development',
     'cloud devops',
-    'technology agency',
   ],
-  authors: [{ name: 'Rocera', url: 'https://rocera.dev' }],
-  creator: 'Rocera',
+  authors: [{ name: 'CENCERA', url: 'https://cencera.xyz' }],
+  creator: 'CENCERA',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://rocera.dev',
-    siteName: 'Rocera',
-    title: 'Rocera — Engineering Software That Lasts',
+    url: 'https://cencera.xyz',
+    siteName: 'CENCERA',
+    title: 'CENCERA — Trust & Safety Infrastructure',
     description:
-      'Premium technology agency specializing in Full Stack, AI, Blockchain, and Cloud engineering.',
+      'High-stakes technology agency specializing in Full Stack, AI Systems, Web3 Protocols, and Trust & Safety Infrastructure.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rocera — Engineering Software That Lasts',
+        alt: 'CENCERA — Trust & Safety Infrastructure',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rocera — Engineering Software That Lasts',
-    description: 'Premium technology agency specializing in Full Stack, AI, Blockchain, and Cloud engineering.',
+    title: 'CENCERA — Trust & Safety Infrastructure',
+    description: 'High-stakes technology agency specializing in Full Stack, AI Systems, Web3 Protocols, and Trust & Safety Infrastructure.',
     images: ['/og-image.png'],
-    creator: '@rocera_dev',
+    creator: '@cencera_dev',
   },
   robots: {
     index: true,
@@ -86,7 +86,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
-        <CustomCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

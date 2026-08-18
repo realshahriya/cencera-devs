@@ -4,140 +4,146 @@ import Link from 'next/link'
 import { GitBranch, Link2, Mail, MessageSquare } from 'lucide-react'
 import { RoceraLogo } from '@/components/ui/RoceraLogo'
 
-const footerLinks = {
-  Company: [
-    { href: '/about', label: 'About' },
-    { href: '/team', label: 'Team' },
-    { href: '/hackathons', label: 'Hackathons' },
-    { href: '/contact', label: 'Contact' },
-  ],
-  Services: [
-    { href: '/services', label: 'Full Stack Development' },
-    { href: '/services', label: 'AI Engineering' },
-    { href: '/services', label: 'Blockchain Engineering' },
-    { href: '/services', label: 'Cloud & DevOps' },
-  ],
-  Work: [
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/portfolio?tag=open-source', label: 'Open Source' },
-  ],
-}
+const servicesLinks = [
+  { href: '/services#defi-dapps', label: 'DeFi & dApps' },
+  { href: '/services#smart-contracts', label: 'Smart Contracts' },
+  { href: '/services#tokens-exchange-listing', label: 'Token & CEX Listing' },
+  { href: '/services#ai-apps', label: 'AI Applications' },
+  { href: '/services#web-development', label: 'Web Development' },
+  { href: '/services#smart-contract-audits', label: 'Smart Contract Audits' },
+]
+
+const companyLinks = [
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/hackathons', label: 'Hackathons' },
+  { href: '/team', label: 'Team' },
+  { href: '/contact', label: 'Contact' },
+]
 
 const socialLinks = [
-  { href: 'https://github.com/rocera-dev', label: 'GitHub', Icon: GitBranch },
-  { href: 'https://linkedin.com/company/rocera', label: 'LinkedIn', Icon: Link2 },
-  { href: 'https://discord.gg/rocera', label: 'Discord', Icon: MessageSquare },
-  { href: 'mailto:hello@rocera.dev', label: 'Email', Icon: Mail },
+  { href: 'https://github.com/cencera', label: 'GitHub', Icon: GitBranch },
+  { href: 'https://linkedin.com/company/cencera', label: 'LinkedIn', Icon: Link2 },
+  { href: 'https://discord.gg/cencera', label: 'Discord', Icon: MessageSquare },
+  { href: 'mailto:hello@cencera.xyz', label: 'Email', Icon: Mail },
 ]
 
 export function Footer() {
   return (
     <footer
+      className="footer relative z-10 pt-16 pb-8"
       style={{
-        background: 'var(--color-rocera-surface)',
-        borderTop: '1px solid var(--color-rocera-border)',
+        background: 'var(--color-cencera-surface)',
+        borderTop: '1px solid var(--color-cencera-border)',
       }}
     >
-      <div className="container-rocera py-12 sm:py-16 px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
+      <div className="container-rocera px-4 sm:px-6">
+        {/* Main Footer Upper Grid */}
+        <div className="flex justify-between items-start flex-wrap gap-10">
+          {/* Brand Column */}
+          <div className="footer__left flex flex-col gap-4 max-w-sm">
+            <Link href="/" className="flex items-center gap-2.5">
               <RoceraLogo className="w-8 h-8" />
-              <span
-                className="font-semibold text-lg tracking-tight"
-                style={{ color: 'var(--color-rocera-text)' }}
-              >
-                Rocera
+              <span className="font-black text-2xl tracking-tighter uppercase text-white">
+                Cencera
               </span>
             </Link>
-            <p
-              className="text-xs sm:text-sm leading-relaxed mb-4 max-w-xs"
-              style={{ color: 'var(--color-rocera-muted)' }}
-            >
-              Premium technology agency. We build exceptional software that lasts.
+            <p className="text-gray-400 text-sm leading-relaxed font-sans">
+              Security infrastructure for human and agentic threats in Web3. High-stakes engineering firm.
             </p>
-            <p
-              className="text-[11px] font-mono tracking-widest uppercase"
-              style={{ color: 'var(--color-rocera-gold)' }}
+            <a
+              href="https://cencera.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#92DCE5] hover:underline font-mono text-sm mt-1 inline-block"
             >
-              Secure. Own. Advance.
-            </p>
+              cencera.xyz //
+            </a>
+          </div>
 
-            {/* Social links */}
-            <div className="flex items-center gap-3 mt-6">
+          {/* Nav Columns */}
+          <div className="footer__right flex flex-wrap gap-10 sm:gap-16 font-sans">
+            {/* Services Column */}
+            <div className="footer__col flex flex-col gap-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
+                Services
+              </span>
+              {servicesLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Company Column */}
+            <div className="footer__col flex flex-col gap-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
+                Company
+              </span>
+              {companyLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Connect Column */}
+            <div className="footer__col flex flex-col gap-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
+                Connect
+              </span>
               {socialLinks.map(({ href, label, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={label}
-                  className="p-2.5 rounded-xl border border-white/10 transition-all duration-200"
-                  style={{ color: 'var(--color-rocera-muted)' }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.color =
-                      'var(--color-rocera-text)'
-                    ;(e.currentTarget as HTMLElement).style.background =
-                      'var(--color-rocera-surface-2)'
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.color =
-                      'var(--color-rocera-muted)'
-                    ;(e.currentTarget as HTMLElement).style.background = 'transparent'
-                  }}
+                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200 flex items-center gap-2"
                 >
-                  <Icon size={16} />
+                  <Icon size={14} className="text-[#92DCE5]" />
+                  <span>{label}</span>
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3
-                className="text-xs font-semibold uppercase tracking-widest mb-4"
-                style={{ color: 'var(--color-rocera-muted)' }}
-              >
-                {category}
-              </h3>
-              <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-xs sm:text-sm transition-colors duration-200"
-                      style={{ color: 'var(--color-rocera-muted)' }}
-                      onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color =
-                          'var(--color-rocera-text)')
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color =
-                          'var(--color-rocera-muted)')
-                      }
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
 
-        {/* Bottom bar */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 pt-8 text-center sm:text-left"
-          style={{ borderTop: '1px solid var(--color-rocera-border)' }}
-        >
-          <p className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
-            © {new Date().getFullYear()} Rocera. All rights reserved.
-          </p>
-          <p className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
-            Built with Next.js · TypeScript · Tailwind CSS
-          </p>
+        {/* CENCERA Huge Watermark SVG Banner (Matching CENCERA-main) */}
+        <div className="w-full mt-12 sm:mt-20 md:mt-24 pointer-events-none select-none overflow-hidden flex justify-center">
+          <svg
+            className="w-full px-2 sm:px-6 md:px-8 text-white/10 max-w-[1600px]"
+            viewBox="0 0 1000 200"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <text
+              x="50%"
+              y="50%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              fill="currentColor"
+              className="font-sans font-black tracking-tighter"
+              style={{ fontSize: '190px' }}
+            >
+              CENCERA
+            </text>
+          </svg>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="footer__bottom flex flex-col sm:flex-row justify-between items-center text-gray-500 font-sans text-xs sm:text-sm py-6 border-t border-white/10 gap-3">
+          <span>© {new Date().getFullYear()} Cencera. All rights reserved.</span>
+          <span className="font-mono text-xs text-gray-400">
+            hello@cencera.xyz // cencera.xyz
+          </span>
         </div>
       </div>
     </footer>

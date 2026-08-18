@@ -120,8 +120,8 @@ export function ContactForm() {
                 value={form.name}
                 onChange={handleChange}
                 style={inputStyle}
-                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-accent)')}
-                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-border)')}
+                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
+                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
               />
             </div>
             <div>
@@ -135,8 +135,8 @@ export function ContactForm() {
                 value={form.email}
                 onChange={handleChange}
                 style={inputStyle}
-                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-accent)')}
-                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-border)')}
+                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
+                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
               />
             </div>
           </div>
@@ -152,8 +152,8 @@ export function ContactForm() {
               value={form.subject}
               onChange={handleChange}
               style={inputStyle}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-accent)')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-border)')}
+              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
+              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
             />
           </div>
 
@@ -165,8 +165,8 @@ export function ContactForm() {
               value={form.budget}
               onChange={handleChange}
               style={{ ...inputStyle, cursor: 'pointer' }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-accent)')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-border)')}
+              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
+              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
             >
               <option value="">Select a range...</option>
               {budgetOptions.map((opt) => (
@@ -188,8 +188,8 @@ export function ContactForm() {
               value={form.message}
               onChange={handleChange}
               style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-accent)')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-rocera-border)')}
+              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
+              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
             />
           </div>
 
@@ -221,7 +221,7 @@ export function ContactForm() {
             ) : (
               <>
                 <Send size={16} />
-                Send Message
+                Send Message //
               </>
             )}
           </button>

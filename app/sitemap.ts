@@ -3,7 +3,7 @@ import { getAllProjectSlugs } from '@/lib/portfolio'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllProjectSlugs()
-  const baseUrl = 'https://rocera.dev'
+  const baseUrl = 'https://cencera.xyz'
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

@@ -70,7 +70,7 @@ export async function getAllProjects(): Promise<Project[]> {
       projects.push({
         slug,
         title: meta.title || slug.charAt(0).toUpperCase() + slug.slice(1),
-        description: meta.description || 'Rocera engineering project.',
+        description: meta.description || 'Cencera engineering project.',
         image:
           meta.image ||
           `https://raw.githubusercontent.com/${GITHUB_PROJECTS_REPO}/main/projects/${slug}/image.png`,

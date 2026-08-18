@@ -47,21 +47,21 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         background: scrolled || isOpen
-          ? 'color-mix(in srgb, var(--color-rocera-bg) 95%, transparent)'
+          ? 'rgba(12, 12, 12, 0.92)'
           : 'transparent',
         backdropFilter: scrolled || isOpen ? 'blur(16px)' : 'none',
-        borderBottom: scrolled || isOpen ? '1px solid var(--color-rocera-border)' : 'none',
+        borderBottom: scrolled || isOpen ? '1px solid var(--color-cencera-border)' : 'none',
       }}
     >
       <nav className="container-rocera flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="Rocera Home">
+        {/* CENCERA Logo */}
+        <Link href="/" className="flex items-center gap-2.5 group" aria-label="CENCERA Home">
           <RoceraLogo className="w-8 h-8 transition-transform duration-300 group-hover:scale-105" />
           <span
-            className="font-semibold text-lg tracking-tight"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="font-black text-xl tracking-tighter font-sans uppercase"
+            style={{ color: 'var(--color-cencera-text)' }}
           >
-            Rocera
+            CENCERA
           </span>
         </Link>
 
@@ -76,10 +76,10 @@ export function Navbar() {
                   className="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
                   style={{
                     color: isActive
-                      ? 'var(--color-rocera-text)'
-                      : 'var(--color-rocera-muted)',
+                      ? '#92DCE5'
+                      : 'var(--color-cencera-muted-2)',
                     background: isActive
-                      ? 'var(--color-rocera-surface-2)'
+                      ? 'rgba(146, 220, 229, 0.1)'
                       : 'transparent',
                   }}
                 >
@@ -97,7 +97,7 @@ export function Navbar() {
             id="nav-start-project"
             className="btn-butter !py-2 !px-5 text-sm"
           >
-            Start a Project
+            Start a Project //
           </Link>
         </div>
 
@@ -105,7 +105,7 @@ export function Navbar() {
         <button
           id="nav-mobile-toggle"
           className="md:hidden p-2 rounded-xl transition-colors duration-200 border border-white/10"
-          style={{ background: 'var(--color-rocera-surface)', color: 'var(--color-rocera-text)' }}
+          style={{ background: 'var(--color-cencera-surface)', color: 'var(--color-cencera-text)' }}
           onClick={toggleMobileMenu}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
@@ -117,7 +117,7 @@ export function Navbar() {
       <div
         className="md:hidden fixed top-16 left-0 right-0 bottom-0 z-40 transition-all duration-300 flex flex-col justify-between p-6"
         style={{
-          background: 'var(--color-rocera-bg)',
+          background: 'var(--color-cencera-bg)',
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
           transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
@@ -134,12 +134,12 @@ export function Navbar() {
                   className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-semibold transition-colors duration-200 border border-transparent"
                   style={{
                     color: isActive
-                      ? 'var(--color-rocera-text)'
-                      : 'var(--color-rocera-muted-2)',
+                      ? '#92DCE5'
+                      : 'var(--color-cencera-muted-2)',
                     background: isActive
-                      ? 'var(--color-rocera-surface-2)'
-                      : 'var(--color-rocera-surface)',
-                    borderColor: isActive ? 'var(--color-rocera-border-2)' : 'var(--color-rocera-border)',
+                      ? 'rgba(146, 220, 229, 0.1)'
+                      : 'var(--color-cencera-surface)',
+                    borderColor: isActive ? 'rgba(146, 220, 229, 0.2)' : 'var(--color-cencera-border)',
                   }}
                 >
                   <span>{link.label}</span>
@@ -155,7 +155,7 @@ export function Navbar() {
             href="/contact"
             className="btn-butter w-full !py-3.5 text-center text-sm"
           >
-            Start a Project
+            Start a Project //
           </Link>
         </div>
       </div>
