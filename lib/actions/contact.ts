@@ -60,7 +60,13 @@ async function sendTelegramMessage(
   topicId: string | undefined,
   tgText: string
 ): Promise<boolean> {
-  const tgApiBase = (process.env.TELEGRAM_API_BASE || 'https://api.telegram.org').replace(/\/$/, '')
+  const customBase = process.env.TELEGRAM_API_BASE
+  const endpoints = customBase
+    ? [customBase.replace(/\/$/, '')]
+    : [
+        'https://api.telegram.org',
+        'https://telegg.ru/orig',
+      ]
 
   const payload: Record<string, any> = {
     chat_id: chatId,
@@ -73,28 +79,30 @@ async function sendTelegramMessage(
     payload.message_thread_id = Number(topicId)
   }
 
-  try {
-    console.log(`Sending Telegram message to chat ${chatId} (topic ${topicId ?? 'none'}) via ${tgApiBase}...`)
-    const res = await fetch(`${tgApiBase}/bot${tgBotToken}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(12000), // 12 second timeout for Vercel serverless cold starts
-    })
+  for (const baseUrl of endpoints) {
+    try {
+      console.log(`Sending Telegram message to chat ${chatId} (topic ${topicId ?? 'none'}) via ${baseUrl}...`)
+      const res = await fetch(`${baseUrl}/bot${tgBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(5000), // 5 second timeout per endpoint
+      })
 
-    const data = await res.json().catch(() => null)
+      const data = await res.json().catch(() => null)
 
-    if (res.ok && data?.ok) {
-      console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId} (topic ${topicId})!`)
-      return true
+      if (res.ok && data?.ok) {
+        console.log(`✅ Telegram Bot message delivered successfully to chat ${chatId} (topic ${topicId}) via ${baseUrl}!`)
+        return true
+      }
+
+      console.error(`Telegram Bot API error for chat ${chatId} via ${baseUrl}:`, data || res.statusText)
+    } catch (err: any) {
+      console.error(`Telegram Bot endpoint ${baseUrl} request timeout/error for chat ${chatId}:`, err.message || err)
     }
-
-    console.error(`Telegram Bot API error for chat ${chatId}:`, data || res.statusText)
-    return false
-  } catch (err: any) {
-    console.error(`Telegram Bot request timeout/error for chat ${chatId}:`, err.message || err)
-    return false
   }
+
+  return false
 }
 
 export async function submitContact(
@@ -181,7 +189,7 @@ export async function submitContact(
             },
           ],
         }),
-        signal: AbortSignal.timeout(5000),
+        signal: AbortSignal.timeout(4000),
       }).catch((err) => console.error('Discord webhook failed:', err.message || err))
     } catch (err) {
       console.error('Discord webhook exception:', err)
