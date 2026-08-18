@@ -42,7 +42,8 @@ export function ContactForm() {
       setForm({ name: '', email: '', subject: '', message: '', budget: '', honeypot: '' })
     } else {
       setStatus('error')
-      setErrorMessage(result.message)
+      const firstError = result.errors ? Object.values(result.errors).flat()[0] : null
+      setErrorMessage(firstError || result.message || 'Please check your form inputs.')
     }
   }
 
