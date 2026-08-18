@@ -79,6 +79,7 @@ export async function submitContact(
   const tgBotToken = process.env.TELEGRAM_BOT_TOKEN
   const tgChatId = process.env.TELEGRAM_CHAT_ID
   const tgTopicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID
+  const tgApiBase = (process.env.TELEGRAM_API_BASE || 'https://api.telegram.org').replace(/\/$/, '')
 
   if (tgBotToken && tgChatId) {
     try {
@@ -102,12 +103,12 @@ export async function submitContact(
         payload.message_thread_id = Number(tgTopicId)
       }
 
-      // Dispatch fetch with a 4-second timeout so network issues never block the UI response
-      fetch(`https://api.telegram.org/bot${tgBotToken}/sendMessage`, {
+      // Dispatch fetch with a 5-second timeout so network issues never block the UI response
+      fetch(`${tgApiBase}/bot${tgBotToken}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(4000),
+        signal: AbortSignal.timeout(5000),
       })
         .then(async (res) => {
           if (!res.ok) {
@@ -150,7 +151,7 @@ export async function submitContact(
             },
           ],
         }),
-        signal: AbortSignal.timeout(4000),
+        signal: AbortSignal.timeout(5000),
       }).catch((err) => console.error('Discord webhook failed:', err.message || err))
     } catch (err) {
       console.error('Discord webhook exception:', err)
