@@ -16,9 +16,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Services — Cencera',
-  description:
-    'DeFi & dApp Development, Smart Contracts, Token & Coin Creation, CEX/DEX Exchange Listing, AI Apps, Web Development, and Smart Contract Audits by CENCERA.',
+  title: 'Engineering Services & Solutions — Cencera Devs',
+  description: 'Explore Cencera Devs engineering services: AI Applications & LLMs, DeFi & Web3 Protocols, Smart Contract Audits, Token Listings, and Enterprise Full Stack Web Apps.',
+  keywords: ['AI engineering', 'Web3 software development', 'Smart contract audits', 'Token CEX listing', 'Full stack development agency'],
 }
 
 const services = [

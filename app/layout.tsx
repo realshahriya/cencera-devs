@@ -35,9 +35,16 @@ export const metadata: Metadata = {
     'Web3 developers',
     'full stack engineering agency',
     'custom software studio',
+    'smart contract audit agency',
+    'DeFi development studio',
   ],
   authors: [{ name: 'CENCERA DEVS', url: 'https://cencera.xyz' }],
   creator: 'CENCERA DEVS',
+  publisher: 'CENCERA DEVS',
+  category: 'technology',
+  alternates: {
+    canonical: 'https://cencera.xyz',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -60,6 +67,7 @@ export const metadata: Metadata = {
     title: 'CENCERA DEVS — Software Engineering Studio & Agency',
     description: 'Elite developer agency specializing in Full Stack Web Engineering, AI Systems, Web3 Protocols, and Custom Software Development.',
     images: ['/og-image.png'],
+    creator: '@cencera',
   },
   robots: {
     index: true,
@@ -79,6 +87,35 @@ export const metadata: Metadata = {
   },
 }
 
+// JSON-LD Structured Data Schema for Google & AI Search Engines
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'CENCERA DEVS',
+  url: 'https://cencera.xyz',
+  logo: 'https://cencera.xyz/logo.png',
+  image: 'https://cencera.xyz/og-image.png',
+  description: 'Elite software engineering studio & developer agency specializing in AI systems, Web3 protocols, cloud infrastructure, and custom software development.',
+  priceRange: '$$$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'US',
+  },
+  sameAs: [
+    'https://github.com/cencera',
+    'https://linkedin.com/company/cencera',
+    'https://discord.gg/cencera',
+  ],
+  knowsAbout: [
+    'Software Engineering',
+    'Artificial Intelligence & LLMs',
+    'Web3 Protocols & Smart Contracts',
+    'Cloud Architecture',
+    'Full Stack Web Development',
+    'Smart Contract Auditing',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,7 +123,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans antialiased bg-cencera-bg text-cencera-text selection:bg-[rgba(59,130,246,0.3)] selection:text-cencera-mint">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="font-sans antialiased bg-cencera-bg text-cencera-text selection:bg-[rgba(37,99,235,0.25)] selection:text-[#1D4ED8]">
         <Navbar />
         <main className="min-h-screen relative z-10">{children}</main>
         <Footer />
