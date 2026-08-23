@@ -18,8 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600', '700'],
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://devs.cencera.xyz'
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cencera.xyz'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'CENCERA DEVS — Software Engineering Studio & Agency',
     template: '%s | Cencera Devs',
@@ -38,26 +40,28 @@ export const metadata: Metadata = {
     'smart contract audit agency',
     'DeFi development studio',
   ],
-  authors: [{ name: 'CENCERA DEVS', url: 'https://cencera.xyz' }],
+  authors: [{ name: 'CENCERA DEVS', url: siteUrl }],
   creator: 'CENCERA DEVS',
   publisher: 'CENCERA DEVS',
   category: 'technology',
   alternates: {
-    canonical: 'https://cencera.xyz',
+    canonical: siteUrl,
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://cencera.xyz',
+    url: siteUrl,
     siteName: 'CENCERA DEVS',
     title: 'CENCERA DEVS — Software Engineering Studio & Agency',
     description:
       'Elite developer agency specializing in Full Stack Web Engineering, AI Systems, Web3 Protocols, and Custom Software Development.',
     images: [
       {
-        url: '/og-image.png',
+        url: `${siteUrl}/og-image.png`,
+        secureUrl: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'CENCERA DEVS — Software Engineering Studio',
       },
     ],
@@ -66,7 +70,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CENCERA DEVS — Software Engineering Studio & Agency',
     description: 'Elite developer agency specializing in Full Stack Web Engineering, AI Systems, Web3 Protocols, and Custom Software Development.',
-    images: ['/og-image.png'],
+    images: [`${siteUrl}/og-image.png`],
     creator: '@cencera',
   },
   robots: {
@@ -92,9 +96,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'CENCERA DEVS',
-  url: 'https://cencera.xyz',
-  logo: 'https://cencera.xyz/logo.png',
-  image: 'https://cencera.xyz/og-image.png',
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  image: `${siteUrl}/og-image.png`,
   description: 'Elite software engineering studio & developer agency specializing in AI systems, Web3 protocols, cloud infrastructure, and custom software development.',
   priceRange: '$$$$',
   address: {
@@ -129,7 +133,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased bg-cencera-bg text-cencera-text selection:bg-[rgba(37,99,235,0.25)] selection:text-[#1D4ED8]">
+      <body className="font-sans antialiased bg-cencera-bg text-[#020617] selection:bg-[rgba(37,99,235,0.25)] selection:text-[#1D4ED8]">
         <Navbar />
         <main className="min-h-screen relative z-10">{children}</main>
         <Footer />
