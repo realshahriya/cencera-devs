@@ -1,23 +1,22 @@
 import teamData from '@/content/team.json'
-import { GitBranch, Link2, X as XIcon, Mail } from 'lucide-react'
+import { GitBranch, Link2, X as XIcon, Mail, Users } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Team',
+  title: 'Team — Cencera',
   description: 'Meet the developers, researchers, marketers, and auditors behind CENCERA.',
 }
 
 export default function TeamPage() {
   return (
-    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
-      <div className="container-rocera">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
+      <div className="container-cencera">
         {/* Header */}
         <div className="max-w-2xl mb-12 sm:mb-20">
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3 text-[#92DCE5]"
-          >
-            The Builders //
-          </p>
+          <div className="section-tag">
+            <Users size={14} className="text-[#3B82F6]" />
+            <span>THE BUILDERS //</span>
+          </div>
           <h1
             className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4"
             style={{ color: 'var(--color-cencera-text)' }}
@@ -29,42 +28,30 @@ export default function TeamPage() {
           </p>
         </div>
 
-        {/* Clean Equal Team Profile Card Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Soft UI Team Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {teamData.map((member) => (
-            <article
-              key={member.id}
-              className="group relative rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: 'var(--color-cencera-surface)',
-                border: '1px solid var(--color-cencera-border)',
-              }}
-            >
+            <article key={member.id} className="soft-card group relative p-6 sm:p-7 flex flex-col justify-between">
               <div>
                 {/* Avatar Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <div
-                    className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl flex items-center justify-center text-lg sm:text-xl font-black tracking-wider shadow-lg transition-transform duration-300 group-hover:scale-105"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, var(--color-cencera-surface-2) 0%, rgba(146, 220, 229, 0.15) 100%)',
-                      color: '#92DCE5',
-                      border: '1px solid var(--color-cencera-border-2)',
-                    }}
-                  >
+                  <div className="soft-icon-box !w-14 !h-14 !text-base font-black tracking-wider">
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
 
-                  <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#92DCE5]/15 text-[#92DCE5] border border-[#92DCE5]/30">
-                    CENCERA CORE
+                  <span className="soft-pill font-mono text-[10px]">
+                    CORE TEAM
                   </span>
                 </div>
 
                 {/* Member Info */}
-                <h2 className="text-base sm:text-lg font-bold mb-1 group-hover:text-[#92DCE5] transition-colors" style={{ color: 'var(--color-cencera-text)' }}>
+                <h2
+                  className="text-base sm:text-lg font-bold mb-1 group-hover:text-[#3B82F6] transition-colors"
+                  style={{ color: 'var(--color-cencera-text)' }}
+                >
                   {member.name}
                 </h2>
-                <p className="text-xs font-semibold mb-4 text-[#7DCD85]">
+                <p className="text-xs font-semibold mb-4 text-[#60A5FA]">
                   {member.role}
                 </p>
 
@@ -75,16 +62,16 @@ export default function TeamPage() {
               </div>
 
               {/* Social Links */}
-              <div className="flex items-center gap-2.5 sm:gap-3 pt-4 border-t border-white/10">
+              <div className="flex items-center gap-2 pt-4 border-t border-white/5">
                 {member.github && (
                   <a
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 sm:p-2 rounded-lg border border-white/10 hover:bg-white/5 text-gray-400 hover:text-[#92DCE5] transition-colors"
+                    className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
                     aria-label={`${member.name} GitHub`}
                   >
-                    <GitBranch size={15} />
+                    <GitBranch size={14} />
                   </a>
                 )}
                 {member.linkedin && (
@@ -92,19 +79,30 @@ export default function TeamPage() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 sm:p-2 rounded-lg border border-white/10 hover:bg-white/5 text-gray-400 hover:text-[#92DCE5] transition-colors"
+                    className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
                     aria-label={`${member.name} LinkedIn`}
                   >
-                    <Link2 size={15} />
+                    <Link2 size={14} />
+                  </a>
+                )}
+                {(member as { twitter?: string }).twitter && (
+                  <a
+                    href={(member as { twitter?: string }).twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
+                    aria-label={`${member.name} Twitter`}
+                  >
+                    <XIcon size={14} />
                   </a>
                 )}
                 {member.email && (
                   <a
                     href={`mailto:${member.email}`}
-                    className="p-2.5 sm:p-2 rounded-lg border border-white/10 hover:bg-white/5 text-gray-400 hover:text-[#92DCE5] transition-colors"
+                    className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
                     aria-label={`Email ${member.name}`}
                   >
-                    <Mail size={15} />
+                    <Mail size={14} />
                   </a>
                 )}
               </div>

@@ -1,8 +1,8 @@
 "use client"
 
 import Link from 'next/link'
-import { GitBranch, Link2, Mail, MessageSquare } from 'lucide-react'
-import { RoceraLogo } from '@/components/ui/RoceraLogo'
+import { GitBranch, Link2, Mail, MessageSquare, ExternalLink } from 'lucide-react'
+import { cenceraLogo } from '@/components/ui/cenceraLogo'
 
 const servicesLinks = [
   { href: '/services#defi-dapps', label: 'DeFi & dApps' },
@@ -34,31 +34,32 @@ export function Footer() {
     <footer
       className="footer relative z-10 pt-16 pb-8"
       style={{
-        background: 'var(--color-cencera-surface)',
-        borderTop: '1px solid var(--color-cencera-border)',
+        background: 'var(--color-cencera-bg)',
+        borderTop: '1px solid rgba(226, 232, 240, 0.9)',
       }}
     >
-      <div className="container-rocera px-4 sm:px-6">
-        {/* Main Footer Upper Grid */}
-        <div className="flex justify-between items-start flex-wrap gap-10">
+      <div className="container-cencera px-4 sm:px-6">
+        {/* Flat, Seamless Footer Upper Section */}
+        <div className="flex justify-between items-start flex-wrap gap-10 py-4 mb-12">
+
           {/* Brand Column */}
           <div className="footer__left flex flex-col gap-4 max-w-sm">
             <Link href="/" className="flex items-center gap-2.5">
-              <RoceraLogo className="w-8 h-8" />
-              <span className="font-black text-2xl tracking-tighter uppercase text-white">
-                Cencera
+              <cenceraLogo className="w-8 h-8" />
+              <span className="font-black text-2xl tracking-tighter uppercase text-gradient">
+                Cencera Devs
               </span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed font-sans">
-              Security infrastructure for human and agentic threats in Web3. High-stakes engineering firm.
+            <p className="text-slate-600 text-sm leading-relaxed font-sans">
+              Elite software development studio and engineering agency specializing in AI systems, Web3 protocols, cloud infrastructure, and custom software.
             </p>
             <a
               href="https://cencera.xyz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#92DCE5] hover:underline font-mono text-sm mt-1 inline-block"
+              className="text-[#2563EB] hover:text-[#1D4ED8] font-mono text-xs flex items-center gap-1.5 transition-colors w-fit font-medium"
             >
-              cencera.xyz //
+              cencera.xyz <ExternalLink size={12} />
             </a>
           </div>
 
@@ -66,14 +67,14 @@ export function Footer() {
           <div className="footer__right flex flex-wrap gap-10 sm:gap-16 font-sans">
             {/* Services Column */}
             <div className="footer__col flex flex-col gap-3">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
-                Services
+              <span className="text-xs font-mono font-bold tracking-widest text-[#2563EB] uppercase mb-1">
+                SERVICES
               </span>
               {servicesLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200"
+                  className="text-slate-600 hover:text-[#2563EB] text-sm transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -82,14 +83,14 @@ export function Footer() {
 
             {/* Company Column */}
             <div className="footer__col flex flex-col gap-3">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
-                Company
+              <span className="text-xs font-mono font-bold tracking-widest text-[#2563EB] uppercase mb-1">
+                COMPANY
               </span>
               {companyLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200"
+                  className="text-slate-600 hover:text-[#2563EB] text-sm transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -98,8 +99,8 @@ export function Footer() {
 
             {/* Connect Column */}
             <div className="footer__col flex flex-col gap-3">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#92DCE5] mb-1">
-                Connect
+              <span className="text-xs font-mono font-bold tracking-widest text-[#2563EB] uppercase mb-1">
+                CONNECT
               </span>
               {socialLinks.map(({ href, label, Icon }) => (
                 <a
@@ -107,9 +108,9 @@ export function Footer() {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-gray-300 hover:text-[#92DCE5] text-sm transition-colors duration-200 flex items-center gap-2"
+                  className="text-slate-600 hover:text-[#2563EB] text-sm transition-colors duration-200 flex items-center gap-2"
                 >
-                  <Icon size={14} className="text-[#92DCE5]" />
+                  <Icon size={14} className="text-[#2563EB]" />
                   <span>{label}</span>
                 </a>
               ))}
@@ -117,11 +118,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* CENCERA Huge Watermark SVG Banner (Matching CENCERA-main) */}
-        <div className="w-full mt-12 sm:mt-20 md:mt-24 pointer-events-none select-none overflow-hidden flex justify-center">
+        {/* CENCERA DEVS Huge Watermark SVG Banner */}
+        <div className="w-full pointer-events-none select-none overflow-hidden flex justify-center opacity-30">
           <svg
-            className="w-full px-2 sm:px-6 md:px-8 text-white/10 max-w-[1600px]"
-            viewBox="0 0 1000 200"
+            className="w-full px-2 sm:px-6 md:px-8 text-slate-400/40 max-w-[1600px]"
+            viewBox="0 0 1000 180"
             preserveAspectRatio="xMidYMid meet"
           >
             <text
@@ -131,19 +132,17 @@ export function Footer() {
               textAnchor="middle"
               fill="currentColor"
               className="font-sans font-black tracking-tighter"
-              style={{ fontSize: '190px' }}
+              style={{ fontSize: '130px' }}
             >
-              CENCERA
+              CENCERA DEVS
             </text>
           </svg>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="footer__bottom flex flex-col sm:flex-row justify-between items-center text-gray-500 font-sans text-xs sm:text-sm py-6 border-t border-white/10 gap-3">
-          <span>© {new Date().getFullYear()} Cencera. All rights reserved.</span>
-          <span className="font-mono text-xs text-gray-400">
-            hello@cencera.xyz // cencera.xyz
-          </span>
+        {/* Bottom copyright */}
+        <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <span>&copy; {new Date().getFullYear()} Cencera Developers. All rights reserved.</span>
+          <span className="font-mono text-[11px]">Designed with Soft Light UI</span>
         </div>
       </div>
     </footer>

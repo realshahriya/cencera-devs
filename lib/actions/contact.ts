@@ -110,6 +110,11 @@ export async function submitContact(
   }
 
   const { name, email, subject, message, budget } = parsed.data
+  const formattedDate = new Date().toLocaleString('en-US', {
+    dateStyle: 'full',
+    timeStyle: 'medium',
+    timeZone: 'UTC',
+  }) + ' UTC'
 
   console.log('📬 New Contact Form Submission:')
   console.log(`  Name: ${name}`)
@@ -118,19 +123,25 @@ export async function submitContact(
   console.log(`  Budget: ${budget ?? 'Not specified'}`)
   console.log(`  Message: ${message}`)
 
-  // 1. Telegram Bot Notification via grammy SDK
+  // 1. Executive Beautiful Telegram Bot Notification
   const tgBotToken = process.env.TELEGRAM_BOT_TOKEN
   const tgChatId = process.env.TELEGRAM_CHAT_ID
   const tgTopicId = process.env.TELEGRAM_TOPIC_ID || process.env.TELEGRAM_THREAD_ID
 
   if (tgBotToken && tgChatId) {
-    const tgText = `🚀 <b>New CENCERA Project Inquiry</b>\n\n` +
-      `<b>👤 Name:</b> ${escapeHtml(name)}\n` +
-      `<b>📧 Email:</b> ${escapeHtml(email)}\n` +
-      `<b>💰 Budget:</b> ${escapeHtml(budget || 'Not specified')}\n` +
-      `<b>📌 Subject:</b> ${escapeHtml(subject)}\n\n` +
-      `<b>💬 Message:</b>\n${escapeHtml(message)}\n\n` +
-      `<i>Sent via cencera.xyz contact form //</i>`
+    const tgText =
+      `✨ <b>NEW CENCERA DEVS PROJECT INQUIRY</b>\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+      `👤 <b>Client Name:</b> <code>${escapeHtml(name)}</code>\n` +
+      `📧 <b>Email Address:</b> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a>\n` +
+      `🎯 <b>Subject:</b> <b>${escapeHtml(subject)}</b>\n` +
+      `💰 <b>Budget Range:</b> <code>${escapeHtml(budget || 'Not specified')}</code>\n\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `💬 <b>Project Details:</b>\n` +
+      `<blockquote>${escapeHtml(message)}</blockquote>\n\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `🌐 <b>Source:</b> <code>cencera.xyz/contact</code>\n` +
+      `📅 <b>Submitted At:</b> <code>${escapeHtml(formattedDate)}</code>`
 
     let sent = await sendTelegramMessage(tgBotToken, tgChatId, tgTopicId, tgText)
 
@@ -148,7 +159,7 @@ export async function submitContact(
     console.warn('⚠️ Telegram Bot config missing: Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env.local / Vercel')
   }
 
-  // 2. Discord Webhook Notification (optional)
+  // 2. Beautiful Discord Webhook Notification (optional)
   const discordWebhook = process.env.DISCORD_WEBHOOK_URL
   if (discordWebhook) {
     try {
@@ -158,15 +169,16 @@ export async function submitContact(
         body: JSON.stringify({
           embeds: [
             {
-              title: '📬 New CENCERA Project Inquiry',
-              color: 0x92dce5,
+              title: '⚡ NEW CENCERA DEVS PROJECT INQUIRY',
+              color: 0x3b82f6,
               fields: [
-                { name: 'Name', value: name, inline: true },
-                { name: 'Email', value: email, inline: true },
-                { name: 'Budget', value: budget ?? 'Not specified', inline: true },
-                { name: 'Subject', value: subject },
-                { name: 'Message', value: message },
+                { name: '👤 Client', value: `\`${name}\``, inline: true },
+                { name: '📧 Email', value: `[${email}](mailto:${email})`, inline: true },
+                { name: '💰 Budget', value: `\`${budget || 'Not specified'}\``, inline: true },
+                { name: '🎯 Subject', value: subject },
+                { name: '💬 Project Details', value: message },
               ],
+              footer: { text: 'cencera.xyz/contact' },
               timestamp: new Date().toISOString(),
             },
           ],

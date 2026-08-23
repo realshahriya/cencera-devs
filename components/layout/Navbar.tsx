@@ -3,16 +3,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X, ArrowRight } from 'lucide-react'
-import { RoceraLogo } from '@/components/ui/RoceraLogo'
+import { Menu, X, ArrowRight, Sparkles } from 'lucide-react'
+import { cenceraLogo } from '@/components/ui/cenceraLogo'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/hackathons', label: 'Hackathons' },
   { href: '/team', label: 'Team' },
-  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -22,106 +21,95 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu on page navigate
   useEffect(() => {
     setIsOpen(false)
-    document.body.style.overflow = ''
   }, [pathname])
 
-  const toggleMobileMenu = () => {
-    const nextState = !isOpen
-    setIsOpen(nextState)
-    if (nextState) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-  }
+  const toggleMobileMenu = () => setIsOpen((prev) => !prev)
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background: scrolled || isOpen
-          ? 'rgba(12, 12, 12, 0.92)'
-          : 'transparent',
-        backdropFilter: scrolled || isOpen ? 'blur(16px)' : 'none',
-        borderBottom: scrolled || isOpen ? '1px solid var(--color-cencera-border)' : 'none',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-none py-4 sm:py-5`}
     >
-      <nav className="container-rocera flex items-center justify-between h-16">
-        {/* CENCERA Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="CENCERA Home">
-          <RoceraLogo className="w-8 h-8 transition-transform duration-300 group-hover:scale-105" />
-          <span
-            className="font-black text-xl tracking-tighter font-sans uppercase"
-            style={{ color: 'var(--color-cencera-text)' }}
-          >
-            CENCERA
+      <div className="container-cencera flex items-center justify-between">
+
+        {/* Soft Glassmorphism Logo Capsule */}
+        <Link
+          href="/"
+          className="pointer-events-auto flex items-center gap-2.5 px-4 py-2 rounded-full glass-capsule transition-all duration-300 group"
+          aria-label="CENCERA DEVS Home"
+        >
+          <cenceraLogo className="w-7 h-7 transition-transform duration-300 group-hover:scale-105" />
+          <span className="font-black text-lg tracking-tighter font-sans uppercase text-gradient">
+            CENCERA DEVS
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-1">
+        {/* Soft Glassmorphism Nav Bar Pill (Desktop) */}
+        <nav
+          className="pointer-events-auto hidden md:flex items-center gap-1.5 p-1.5 rounded-full glass-capsule transition-all duration-300"
+        >
           {navLinks.map((link) => {
             const isActive = pathname === link.href
             return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
-                  style={{
-                    color: isActive
-                      ? '#92DCE5'
-                      : 'var(--color-cencera-muted-2)',
-                    background: isActive
-                      ? 'rgba(146, 220, 229, 0.1)'
-                      : 'transparent',
-                  }}
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300"
+                style={
+                  isActive
+                    ? {
+                      background: 'linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)',
+                      color: '#FFFFFF',
+                      boxShadow: '0 4px 12px rgba(29, 78, 216, 0.35)',
+                    }
+                    : {
+                      color: 'var(--color-cencera-muted-2)',
+                    }
+                }
+              >
+                {link.label}
+              </Link>
             )
           })}
-        </ul>
+        </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Soft Glass CTA (Desktop) */}
+        <div className="pointer-events-auto hidden md:flex items-center gap-3">
           <Link
             href="/contact"
             id="nav-start-project"
-            className="btn-butter !py-2 !px-5 text-sm"
+            className="btn-butter !py-2.5 !px-6 !text-xs tracking-wider font-bold"
           >
-            Start a Project //
+            <Sparkles size={14} className="text-white" />
+            Start Project
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Toggle Button */}
         <button
           id="nav-mobile-toggle"
-          className="md:hidden p-2 rounded-xl transition-colors duration-200 border border-white/10"
-          style={{ background: 'var(--color-cencera-surface)', color: 'var(--color-cencera-text)' }}
+          className="pointer-events-auto md:hidden p-2.5 rounded-full glass-capsule transition-all duration-200 text-[#020617]"
           onClick={toggleMobileMenu}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </nav>
+      </div>
 
-      {/* Mobile Drawer Navigation Overlay */}
+      {/* Mobile Overlay Menu */}
       <div
-        className="md:hidden fixed top-16 left-0 right-0 bottom-0 z-40 transition-all duration-300 flex flex-col justify-between p-6"
+        className="pointer-events-auto md:hidden fixed top-20 left-4 right-4 z-40 rounded-3xl transition-all duration-300 flex flex-col gap-5 p-6 glass-capsule"
         style={{
-          background: 'var(--color-cencera-bg)',
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
-          transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
-          minHeight: 'calc(100vh - 4rem)',
+          transform: isOpen ? 'translateY(0) scale(1)' : 'translateY(-10px) scale(0.96)',
         }}
       >
         <ul className="flex flex-col gap-2">
@@ -131,26 +119,29 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-semibold transition-colors duration-200 border border-transparent"
-                  style={{
-                    color: isActive
-                      ? '#92DCE5'
-                      : 'var(--color-cencera-muted-2)',
-                    background: isActive
-                      ? 'rgba(146, 220, 229, 0.1)'
-                      : 'var(--color-cencera-surface)',
-                    borderColor: isActive ? 'rgba(146, 220, 229, 0.2)' : 'var(--color-cencera-border)',
-                  }}
+                  className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold transition-all duration-200"
+                  style={
+                    isActive
+                      ? {
+                        background: 'linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)',
+                        color: '#FFFFFF',
+                        boxShadow: '0 4px 12px rgba(29, 78, 216, 0.35)',
+                      }
+                      : {
+                        background: 'rgba(241, 245, 249, 0.8)',
+                        color: 'var(--color-cencera-muted-2)',
+                      }
+                  }
                 >
                   <span>{link.label}</span>
-                  <ArrowRight size={16} className="opacity-50" />
+                  <ArrowRight size={16} className="opacity-70" />
                 </Link>
               </li>
             )
           })}
         </ul>
 
-        <div className="pt-6 border-t border-white/10">
+        <div className="pt-4 border-t border-slate-200">
           <Link
             href="/contact"
             className="btn-butter w-full !py-3.5 text-center text-sm"

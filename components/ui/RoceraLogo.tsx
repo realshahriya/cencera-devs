@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-export function RoceraLogo({ className = 'w-8 h-8' }: { className?: string }) {
+export function cenceraLogo({ className = 'w-8 h-8' }: { className?: string }) {
   return (
     <Image
-      src="/cencera-logo.png"
+      src="/logo.png"
       alt="Cencera Logo"
       width={40}
       height={40}

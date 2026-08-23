@@ -1,9 +1,9 @@
 import { ContactForm } from '@/components/contact/ContactForm'
-import { GitBranch, Link2, Mail, MessageSquare } from 'lucide-react'
+import { GitBranch, Link2, Mail, MessageSquare, Compass, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Contact — Cencera',
   description: "Start a project with CENCERA. Tell us what you're building.",
 }
 
@@ -36,16 +36,15 @@ const contactDetails = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
-      <div className="container-rocera">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
+      <div className="container-cencera">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: info */}
           <div>
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3 text-[#92DCE5]"
-            >
-              Get in Touch //
-            </p>
+            <div className="section-tag">
+              <Compass size={14} className="text-[#3B82F6]" />
+              <span>GET IN TOUCH //</span>
+            </div>
             <h1
               className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6"
               style={{ color: 'var(--color-cencera-text)' }}
@@ -67,21 +66,17 @@ export default function ContactPage() {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 group transition-all duration-200 hover:bg-white/5"
-                  style={{ background: 'var(--color-cencera-surface)' }}
+                  className="soft-card p-4 flex items-center gap-3 group transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-200"
-                    style={{ background: 'var(--color-cencera-surface-2)', border: '1px solid var(--color-cencera-border)' }}
-                  >
-                    <Icon size={16} className="text-[#92DCE5]" />
+                  <div className="soft-icon-box !w-10 !h-10 shrink-0">
+                    <Icon size={16} />
                   </div>
                   <div className="overflow-hidden">
-                    <p className="text-[11px] font-mono uppercase text-gray-400">
+                    <p className="text-[11px] font-mono uppercase text-gray-400 font-semibold">
                       {label}
                     </p>
                     <p
-                      className="text-xs sm:text-sm font-semibold truncate transition-colors duration-200"
+                      className="text-xs sm:text-sm font-semibold truncate group-hover:text-[#3B82F6] transition-colors"
                       style={{ color: 'var(--color-cencera-text)' }}
                     >
                       {value}
@@ -91,23 +86,22 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Response time */}
-            <div
-              className="mt-8 sm:mt-10 p-4 rounded-xl flex items-center gap-3"
-              style={{ background: 'var(--color-cencera-surface)', border: '1px solid var(--color-cencera-border)' }}
-            >
-              <span
-                className="w-2.5 h-2.5 rounded-full shrink-0 bg-[#7DCD85]"
-              />
-              <p className="text-xs sm:text-sm" style={{ color: 'var(--color-cencera-muted-2)' }}>
-                Average response time:{' '}
-                <span className="font-semibold text-white">under 24 hours</span>
-              </p>
+            {/* Response time badge */}
+            <div className="mt-8 sm:mt-10 soft-card p-4 flex items-center gap-3">
+              <div className="soft-icon-box !w-9 !h-9 shrink-0">
+                <Clock size={16} className="text-[#60A5FA]" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-white">Rapid Technical Response</p>
+                <p className="text-xs text-gray-400">Guaranteed response within 24 hours</p>
+              </div>
             </div>
           </div>
 
-          {/* Right: form */}
-          <ContactForm />
+          {/* Right: Contact Form */}
+          <div>
+            <ContactForm />
+          </div>
         </div>
       </div>
     </div>

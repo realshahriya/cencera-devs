@@ -55,8 +55,8 @@ function getAllLocalProjects(): Project[] {
 }
 
 /**
- * Retrieves projects EXCLUSIVELY from the dedicated content repository (realshahriya/rocera-projects).
- * Each project is represented as a directory inside realshahriya/rocera-projects/projects/<slug>/ containing meta.json and image.png.
+ * Retrieves projects EXCLUSIVELY from the dedicated content repository (realshahriya/cencera-projects).
+ * Each project is represented as a directory inside realshahriya/cencera-projects/projects/<slug>/ containing meta.json and image.png.
  */
 export async function getAllProjects(): Promise<Project[]> {
   const dedicatedDirs = await getDedicatedProjectDirs()
@@ -106,7 +106,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 }
 
 /**
- * Retrieves a single project by slug with rendered markdown content from meta.json / caseStudy / README.md inside realshahriya/rocera-projects
+ * Retrieves a single project by slug with rendered markdown content from meta.json / caseStudy / README.md inside realshahriya/cencera-projects
  */
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   const projects = await getAllProjects()
@@ -115,7 +115,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 
   // Fetch meta.json from dedicated content repository
   const dedicatedMeta = await getDedicatedProjectMeta(slug)
-  
+
   // Resolve case study markdown text (meta.json -> caseStudy -> dedicated README.md -> local .md)
   let markdownContent = dedicatedMeta?.content || dedicatedMeta?.caseStudy || ''
 

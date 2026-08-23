@@ -19,39 +19,39 @@ import {
 } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
+import { Cpu } from 'lucide-react'
 
 interface TechBadge {
   name: string
   icon: IconType
-  brandColor: string
 }
 
 const frontendTech: TechBadge[] = [
-  { name: 'Next.js 16', icon: SiNextdotjs, brandColor: '#ffffff' },
-  { name: 'TypeScript', icon: SiTypescript, brandColor: '#3178c6' },
-  { name: 'React 19', icon: SiReact, brandColor: '#61dafb' },
-  { name: 'Tailwind CSS', icon: SiTailwindcss, brandColor: '#06b6d4' },
+  { name: 'Next.js 16', icon: SiNextdotjs },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'React 19', icon: SiReact },
+  { name: 'Tailwind CSS', icon: SiTailwindcss },
 ]
 
 const aiTech: TechBadge[] = [
-  { name: 'PyTorch', icon: SiPytorch, brandColor: '#ee4c2c' },
-  { name: 'LangChain', icon: SiLangchain, brandColor: '#38bdf8' },
-  { name: 'Python', icon: SiPython, brandColor: '#3776ab' },
+  { name: 'PyTorch', icon: SiPytorch },
+  { name: 'LangChain', icon: SiLangchain },
+  { name: 'Python', icon: SiPython },
 ]
 
 const web3Tech: TechBadge[] = [
-  { name: 'Rust', icon: SiRust, brandColor: '#f74c00' },
-  { name: 'Go', icon: SiGo, brandColor: '#00add8' },
-  { name: 'Solidity', icon: SiSolidity, brandColor: '#a78bfa' },
+  { name: 'Rust', icon: SiRust },
+  { name: 'Go', icon: SiGo },
+  { name: 'Solidity', icon: SiSolidity },
 ]
 
 const cloudTech: TechBadge[] = [
-  { name: 'AWS', icon: FaAws, brandColor: '#ff9900' },
-  { name: 'Kubernetes', icon: SiKubernetes, brandColor: '#326ce5' },
-  { name: 'Terraform', icon: SiTerraform, brandColor: '#844fba' },
-  { name: 'Docker', icon: SiDocker, brandColor: '#2496ed' },
-  { name: 'PostgreSQL', icon: SiPostgresql, brandColor: '#4169e1' },
-  { name: 'Redis', icon: SiRedis, brandColor: '#dc382d' },
+  { name: 'AWS', icon: FaAws },
+  { name: 'Kubernetes', icon: SiKubernetes },
+  { name: 'Terraform', icon: SiTerraform },
+  { name: 'Docker', icon: SiDocker },
+  { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'Redis', icon: SiRedis },
 ]
 
 export function TechStackSection() {
@@ -59,215 +59,112 @@ export function TechStackSection() {
     <section
       id="tech-stack"
       className="section-padding relative overflow-hidden"
-      style={{ background: 'var(--color-rocera-bg)' }}
+      style={{ background: 'var(--color-cencera-bg)' }}
     >
-      <div className="container-rocera relative z-10">
+      <div className="container-cencera relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: 'var(--color-rocera-accent)' }}
-          >
-            Our Stack
-          </p>
+        <div className="text-center mb-16 max-w-2xl mx-auto flex flex-col items-center">
+          <div className="section-tag">
+            <Cpu size={14} className="text-[#1D4ED8]" />
+            <span>OUR TECH STACK //</span>
+          </div>
           <h2
-            className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-[#020617]"
           >
             Technologies We Master
           </h2>
-          <p className="text-base leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
+          <p className="text-base leading-relaxed text-[#1E293B] font-medium">
             We leverage production-proven tools and modern frameworks to deliver scalable, high-performance software.
           </p>
         </div>
 
-        {/* Bento Box Grid Layout */}
+        {/* Soft Light Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {/* Bento Box 1 — Frontend & Full Stack Core (Spans 2 Columns) */}
-          <div
-            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
-            }}
-          >
+          {/* Card 1 — Frontend & Full Stack */}
+          <div className="soft-card group relative p-8 flex flex-col justify-between lg:col-span-2">
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-[#80ded9] font-semibold uppercase mb-2 block">
-                FRONTEND & FULL-STACK ENGINE
+              <span className="soft-pill font-mono text-xs mb-3">
+                FRONTEND &amp; FULL-STACK ENGINE
               </span>
-              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
-                Modern Web & Client Applications
+              <h3 className="text-2xl font-bold mt-2 text-[#020617]">
+                Modern Web &amp; Client Applications
               </h3>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {frontendTech.map(({ name, icon: Icon, brandColor }) => (
-                <div
-                  key={name}
-                  className="p-4 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
-                  style={{
-                    background: 'var(--color-rocera-surface-2)',
-                    border: '1px solid var(--color-rocera-border)',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                  }}
-                >
-                  <Icon size={28} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
-                  <span className="text-xs font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
-                    {name}
-                  </span>
+              {frontendTech.map(({ name, icon: Icon }) => (
+                <div key={name} className="soft-card-inset p-4 flex flex-col items-center gap-2.5 text-center">
+                  <Icon size={24} className="text-[#1D4ED8]" />
+                  <span className="text-xs font-bold text-[#0F172A]">{name}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Bento Box 2 — AI & ML Box */}
-          <div
-            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
-            }}
-          >
+          {/* Card 2 — AI & ML */}
+          <div className="soft-card group relative p-8 flex flex-col justify-between">
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-[#aeecef] font-semibold uppercase mb-2 block">
-                AI & MACHINE LEARNING
+              <span className="soft-pill font-mono text-xs mb-3">
+                AI &amp; INTELLIGENCE
               </span>
-              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
-                Intelligence Stack
+              <h3 className="text-2xl font-bold mt-2 text-[#020617]">
+                Machine Learning &amp; LLMs
               </h3>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
-              {aiTech.map(({ name, icon: Icon, brandColor }) => (
-                <div
-                  key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
-                  style={{
-                    background: 'var(--color-rocera-surface-2)',
-                    border: '1px solid var(--color-rocera-border)',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                  }}
-                >
-                  <Icon size={26} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
-                  <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
-                    {name}
-                  </span>
+              {aiTech.map(({ name, icon: Icon }) => (
+                <div key={name} className="soft-card-inset p-3 flex flex-col items-center gap-2 text-center">
+                  <Icon size={22} className="text-[#1D4ED8]" />
+                  <span className="text-[11px] font-bold text-[#0F172A]">{name}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Bento Box 3 — Systems & Blockchain Box */}
-          <div
-            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
-            }}
-          >
+          {/* Card 3 — Systems & Web3 */}
+          <div className="soft-card group relative p-8 flex flex-col justify-between">
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-[#80ded9] font-semibold uppercase mb-2 block">
-                SYSTEMS & WEB3
+              <span className="soft-pill font-mono text-xs mb-3">
+                SYSTEMS &amp; PROTOCOLS
               </span>
-              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
+              <h3 className="text-2xl font-bold mt-2 text-[#020617]">
                 High-Performance Core
               </h3>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
-              {web3Tech.map(({ name, icon: Icon, brandColor }) => (
-                <div
-                  key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
-                  style={{
-                    background: 'var(--color-rocera-surface-2)',
-                    border: '1px solid var(--color-rocera-border)',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                  }}
-                >
-                  <Icon size={26} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
-                  <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
-                    {name}
-                  </span>
+              {web3Tech.map(({ name, icon: Icon }) => (
+                <div key={name} className="soft-card-inset p-3 flex flex-col items-center gap-2 text-center">
+                  <Icon size={22} className="text-[#1D4ED8]" />
+                  <span className="text-[11px] font-bold text-[#0F172A]">{name}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Bento Box 4 — Cloud, DevOps & Databases (Spans 2 Columns) */}
-          <div
-            className="group relative rounded-3xl p-8 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
-            style={{
-              background: 'var(--color-rocera-surface)',
-              border: '1px solid var(--color-rocera-border)',
-            }}
-          >
+          {/* Card 4 — Cloud Infrastructure (Spans 2 Columns) */}
+          <div className="soft-card group relative p-8 flex flex-col justify-between lg:col-span-2">
             <div className="mb-6">
-              <span className="text-xs font-mono tracking-widest text-[#6d9dc5] font-semibold uppercase mb-2 block">
-                CLOUD, DEVOPS & DATA INFRASTRUCTURE
+              <span className="soft-pill font-mono text-xs mb-3">
+                CLOUD &amp; DATA INFRASTRUCTURE
               </span>
-              <h3 className="text-2xl font-bold" style={{ color: 'var(--color-rocera-text)' }}>
-                Cloud Native Architecture
+              <h3 className="text-2xl font-bold mt-2 text-[#020617]">
+                Enterprise Scale &amp; Databases
               </h3>
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-              {cloudTech.map(({ name, icon: Icon, brandColor }) => (
-                <div
-                  key={name}
-                  className="p-3 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer hover:-translate-y-0.5 transition-all duration-300 group/item"
-                  style={{
-                    background: 'var(--color-rocera-surface-2)',
-                    border: '1px solid var(--color-rocera-border)',
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = brandColor + '80'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${brandColor}25`
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-rocera-border)'
-                    ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                  }}
-                >
-                  <Icon size={24} className="mb-2 transition-transform duration-300 group-hover/item:scale-110" style={{ color: brandColor }} />
-                  <span className="text-[11px] font-semibold" style={{ color: 'var(--color-rocera-text)' }}>
-                    {name}
-                  </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+              {cloudTech.map(({ name, icon: Icon }) => (
+                <div key={name} className="soft-card-inset p-3 flex flex-col items-center gap-2 text-center">
+                  <Icon size={22} className="text-[#1D4ED8]" />
+                  <span className="text-[11px] font-bold text-[#0F172A]">{name}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Bottom Fade Gradient into Next Section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 0%, var(--color-rocera-surface) 100%)',
-        }}
-      />
     </section>
   )
 }

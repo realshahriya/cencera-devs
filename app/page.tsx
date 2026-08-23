@@ -9,9 +9,9 @@ import { getFeaturedProjects } from '@/lib/portfolio'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Rocera — Engineering Software That Lasts',
+  title: 'cencera — Engineering Software That Lasts',
   description:
-    'Rocera partners with startups, founders, and organizations to design and build reliable software, AI systems, blockchain solutions, and modern digital products.',
+    'cencera partners with startups, founders, and organizations to design and build reliable software, AI systems, blockchain solutions, and modern digital products.',
 }
 
 export default async function HomePage() {
@@ -26,14 +26,14 @@ export default async function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'Rocera',
-            url: 'https://rocera.dev',
-            logo: 'https://rocera.dev/logo.svg',
+            name: 'cencera',
+            url: 'https://cencera.dev',
+            logo: 'https://cencera.dev/logo.svg',
             description:
               'Premium technology agency specializing in Full Stack, AI, Blockchain, and Cloud engineering.',
             sameAs: [
-              'https://github.com/rocera-dev',
-              'https://linkedin.com/company/rocera',
+              'https://github.com/cencera-dev',
+              'https://linkedin.com/company/cencera',
             ],
           }),
         }}

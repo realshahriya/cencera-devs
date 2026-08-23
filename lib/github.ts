@@ -1,7 +1,7 @@
 const GITHUB_API = 'https://api.github.com'
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const GITHUB_USER = process.env.GITHUB_USER || 'realshahriya'
-export const GITHUB_PROJECTS_REPO = process.env.GITHUB_PROJECTS_REPO || `${GITHUB_USER}/rocera-projects`
+export const GITHUB_PROJECTS_REPO = process.env.GITHUB_PROJECTS_REPO || `${GITHUB_USER}/cencera-projects`
 
 const headers: HeadersInit = {
   Accept: 'application/vnd.github.v3+json',
@@ -38,7 +38,7 @@ async function fetchWithTimeout<T>(url: string, options?: RequestInit): Promise<
 }
 
 /**
- * Fetch meta.json for a project folder inside realshahriya/rocera-projects (bypassing REST API rate limits via raw usercontent)
+ * Fetch meta.json for a project folder inside realshahriya/cencera-projects (bypassing REST API rate limits via raw usercontent)
  */
 export async function getDedicatedProjectMeta(slug: string): Promise<DedicatedProjectMeta | null> {
   const possiblePaths = [
@@ -85,7 +85,7 @@ export async function getDedicatedProjectMeta(slug: string): Promise<DedicatedPr
 }
 
 /**
- * Fetch project directory names from realshahriya/rocera-projects
+ * Fetch project directory names from realshahriya/cencera-projects
  * 100% Rate-Limit Proof: Checks raw index files first via raw.githubusercontent.com, then API.github.com
  */
 export async function getDedicatedProjectDirs(): Promise<string[]> {
@@ -161,7 +161,7 @@ export async function getDedicatedProjectDirs(): Promise<string[]> {
 }
 
 /**
- * Fetch README.md case study for a project folder inside realshahriya/rocera-projects
+ * Fetch README.md case study for a project folder inside realshahriya/cencera-projects
  */
 export async function getDedicatedProjectReadme(slug: string): Promise<string | null> {
   const possiblePaths = [

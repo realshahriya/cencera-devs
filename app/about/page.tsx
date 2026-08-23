@@ -1,39 +1,31 @@
 import Link from 'next/link'
-import { ArrowRight, ShieldCheck, Cpu, Compass, HeartHandshake } from 'lucide-react'
-import { RoceraLogo } from '@/components/ui/RoceraLogo'
+import { ArrowRight, ShieldCheck, Cpu, Compass, HeartHandshake, Award, Sparkles } from 'lucide-react'
+import { cenceraLogo } from '@/components/ui/cenceraLogo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About — Cencera',
   description: 'Learn about CENCERA — our story, mission, and approach to trust & safety infrastructure engineering.',
 }
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
-      <div className="container-rocera">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
+      <div className="container-cencera">
         {/* Story Hero Area */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 sm:mb-24">
           <div>
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4 text-[#92DCE5]"
-            >
-              Our Origin & Story //
-            </p>
+            <div className="section-tag">
+              <Award size={14} className="text-[#3B82F6]" />
+              <span>OUR ORIGIN &amp; STORY //</span>
+            </div>
             <h1
               className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-[1.1]"
               style={{ color: 'var(--color-cencera-text)' }}
             >
               Built by Engineers,
               <br />
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #F3E8EE 0%, #92DCE5 50%, #7DCD85 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
+              <span className="text-gradient-accent">
                 For Engineers.
               </span>
             </h1>
@@ -47,26 +39,13 @@ export default function AboutPage() {
               className="text-xs sm:text-base leading-relaxed"
               style={{ color: 'var(--color-cencera-muted-2)' }}
             >
-              Our mission is to build resilient trust & safety infrastructure and high-throughput systems that power the next generation of AI, Web3, and cloud infrastructure.
+              Our mission is to build resilient trust &amp; safety infrastructure and high-throughput systems that power the next generation of AI, Web3, and cloud infrastructure.
             </p>
           </div>
 
           <div className="flex items-center justify-center">
-            <div
-              className="relative p-8 sm:p-14 rounded-3xl group transition-all duration-500 hover:scale-[1.02] w-full max-w-sm sm:max-w-none flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-cencera-surface) 0%, var(--color-cencera-surface-2) 100%)',
-                border: '1px solid var(--color-cencera-border-2)',
-              }}
-            >
-              <RoceraLogo className="w-28 sm:w-40 h-28 sm:h-40 opacity-90 transition-transform duration-500 group-hover:scale-105" />
-              <div
-                className="absolute inset-0 rounded-3xl pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(ellipse at center, rgba(146, 220, 229, 0.2) 0%, transparent 70%)',
-                }}
-              />
+            <div className="soft-card p-8 sm:p-14 w-full max-w-sm sm:max-w-none flex items-center justify-center">
+              <cenceraLogo className="w-28 sm:w-40 h-28 sm:h-40 opacity-90 transition-transform duration-500 hover:scale-105" />
             </div>
           </div>
         </div>
@@ -74,11 +53,10 @@ export default function AboutPage() {
         {/* Values Bento Box Grid */}
         <div className="mb-16 sm:mb-24">
           <div className="max-w-2xl mb-8 sm:mb-12">
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3 text-[#92DCE5]"
-            >
-              How We Work //
-            </p>
+            <div className="section-tag">
+              <Compass size={14} className="text-[#3B82F6]" />
+              <span>HOW WE WORK //</span>
+            </div>
             <h2
               className="text-2xl sm:text-4xl font-extrabold tracking-tight"
               style={{ color: 'var(--color-cencera-text)' }}
@@ -88,16 +66,10 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Bento Card 1 — Featured Values Card (Spans 2 Cols) */}
-            <div
-              className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-cencera-surface) 0%, var(--color-cencera-surface-2) 100%)',
-                border: '1px solid var(--color-cencera-border-2)',
-              }}
-            >
+            {/* Bento Card 1 — First Principles (Spans 2 Cols) */}
+            <div className="soft-card group relative p-6 sm:p-8 lg:p-10 flex flex-col justify-between lg:col-span-2">
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#92DCE5]/15 border border-[#92DCE5]/30 text-[#92DCE5]">
+                <div className="soft-icon-box mb-6">
                   <Cpu size={24} />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
@@ -109,16 +81,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Bento Card 2 — Craftsmanship Over Speed */}
-            <div
-              className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'var(--color-cencera-surface)',
-                border: '1px solid var(--color-cencera-border)',
-              }}
-            >
+            {/* Bento Card 2 — Craftsmanship */}
+            <div className="soft-card group relative p-6 sm:p-8 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#7DCD85]/20 border border-[#7DCD85]/40 text-[#7DCD85]">
+                <div className="soft-icon-box mb-6">
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
@@ -130,16 +96,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Bento Card 3 — Long-Term Partnership */}
-            <div
-              className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'var(--color-cencera-surface)',
-                border: '1px solid var(--color-cencera-border)',
-              }}
-            >
+            {/* Bento Card 3 — Ownership */}
+            <div className="soft-card group relative p-6 sm:p-8 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-[#92DCE5]/20 border border-[#92DCE5]/40 text-[#92DCE5]">
+                <div className="soft-icon-box mb-6">
                   <HeartHandshake size={24} />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-3" style={{ color: 'var(--color-cencera-text)' }}>
@@ -151,21 +111,15 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Bento Card 4 — Honest Communication (Spans 2 Cols) */}
-            <div
-              className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between lg:col-span-2 transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-cencera-surface-2) 0%, var(--color-cencera-surface) 100%)',
-                border: '1px solid var(--color-cencera-border-2)',
-              }}
-            >
+            {/* Bento Card 4 — Communication (Spans 2 Cols) */}
+            <div className="soft-card group relative p-6 sm:p-8 lg:p-10 flex flex-col justify-between lg:col-span-2">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#88D5B5]/25 border border-[#88D5B5]/45 text-[#88D5B5] shrink-0">
+                <div className="soft-icon-box shrink-0">
                   <Compass size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: 'var(--color-cencera-text)' }}>
-                    Direct & Honest Technical Communication
+                    Direct &amp; Honest Technical Communication
                   </h3>
                   <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--color-cencera-muted-2)' }}>
                     We tell clients what they need to hear, not just what is convenient. If a proposed technical path will break at scale, we speak up immediately and provide a battle-tested alternative.
@@ -176,8 +130,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center max-w-3xl mx-auto py-12 px-4">
+        {/* Bottom CTA Card */}
+        <div className="soft-card text-center max-w-3xl mx-auto p-8 sm:p-12">
           <h2
             className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4"
             style={{ color: 'var(--color-cencera-text)' }}
@@ -189,8 +143,9 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="group btn-butter text-center inline-flex justify-center"
+            className="group btn-butter text-center inline-flex justify-center gap-2"
           >
+            <Sparkles size={16} />
             Get in touch // <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

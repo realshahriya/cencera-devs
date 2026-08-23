@@ -2,14 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ExternalLink, GitBranch, ArrowRight, Star } from 'lucide-react'
+import { ExternalLink, GitBranch, ArrowRight, Star, FolderGit2 } from 'lucide-react'
 import type { Project } from '@/types/portfolio'
-
-const statusColors = {
-  completed: { bg: '#80ded915', text: '#80ded9', label: 'Completed' },
-  'in-progress': { bg: '#6d9dc515', text: '#6d9dc5', label: 'In Progress' },
-  archived: { bg: '#53599a15', text: '#53599a', label: 'Archived' },
-}
 
 export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
   const [imgError, setImgError] = useState(false)
@@ -25,65 +19,49 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
     <section
       id="featured-portfolio"
       className="section-padding relative overflow-hidden px-4 sm:px-6"
-      style={{ background: 'var(--color-rocera-surface)' }}
+      style={{ background: 'var(--color-cencera-bg)' }}
     >
-      <div className="container-rocera relative z-10">
+      <div className="container-cencera relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
-            <p
-              className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: 'var(--color-rocera-accent)' }}
-            >
-              Our Engineering Portfolio
-            </p>
+            <div className="section-tag">
+              <FolderGit2 size={14} className="text-[#3B82F6]" />
+              <span>PORTFOLIO SHOWCASE //</span>
+            </div>
             <h2
-              className="text-3xl sm:text-5xl font-extrabold tracking-tight"
-              style={{ color: 'var(--color-rocera-text)' }}
+              className="text-3xl sm:text-5xl font-black tracking-tight"
+              style={{ color: 'var(--color-cencera-text)' }}
             >
-              Featured Projects
+              Featured Engineering
             </h2>
           </div>
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-2 text-sm font-semibold shrink-0 transition-colors duration-200"
-            style={{ color: 'var(--color-rocera-accent)' }}
+            className="group btn-butter-secondary !py-2.5 !px-6 text-xs shrink-0"
           >
-            View all projects
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            View all projects //
+            <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Bento Box Grid Layout */}
+        {/* Soft UI Bento Box Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Bento Card 1 — Featured Spotlight Project */}
+          {/* Spotlight Card */}
           {spotlight && (
             <article
-              className={`group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01] ${
-                isSingle ? 'lg:col-span-3' : 'lg:col-span-2'
-              }`}
-              style={{
-                background: 'linear-gradient(135deg, var(--color-rocera-bg) 0%, var(--color-rocera-surface-2) 100%)',
-                border: '1px solid var(--color-rocera-border-2)',
-              }}
+              className={`soft-card group relative p-6 sm:p-8 lg:p-10 flex flex-col justify-between ${isSingle ? 'lg:col-span-3' : 'lg:col-span-2'
+                }`}
             >
-              <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none opacity-20 bg-[#068d9d]" />
-
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-                  <span
-                    className="px-3 py-1 rounded-full text-xs font-mono font-medium"
-                    style={{
-                      background: statusColors[spotlight.status].bg,
-                      color: statusColors[spotlight.status].text,
-                    }}
-                  >
-                    FEATURED • {statusColors[spotlight.status].label.toUpperCase()}
+                  <span className="soft-pill font-mono text-xs">
+                    FEATURED PROJECT
                   </span>
 
                   {spotlight.stargazersCount !== undefined && (
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-black/40 border border-white/10 text-[#80ded9]">
-                      <Star size={12} className="fill-[#80ded9]" />
+                    <div className="soft-pill font-mono text-xs text-[#3B82F6]">
+                      <Star size={13} className="fill-[#3B82F6]" />
                       <span>{spotlight.stargazersCount} Stars</span>
                     </div>
                   )}
@@ -91,56 +69,63 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   <div className={spotlight.image && !imgError ? 'lg:col-span-7' : 'lg:col-span-12'}>
-                    <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                    <h3
+                      className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 group-hover:text-[#3B82F6] transition-colors"
+                      style={{ color: 'var(--color-cencera-text)' }}
+                    >
                       {spotlight.title}
                     </h3>
-                    <p className="text-xs sm:text-base leading-relaxed mb-6 sm:mb-8" style={{ color: 'var(--color-rocera-muted-2)' }}>
+                    <p
+                      className="text-xs sm:text-base leading-relaxed mb-6 sm:mb-8"
+                      style={{ color: 'var(--color-cencera-muted-2)' }}
+                    >
                       {spotlight.description}
                     </p>
                   </div>
 
                   {spotlight.image && !imgError && (
-                    <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div className="lg:col-span-5 w-full soft-card-inset p-2 overflow-hidden">
                       <img
                         src={spotlight.image}
                         alt={spotlight.title}
                         onError={() => setImgError(true)}
-                        className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-48 sm:h-56 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="relative z-10 mt-6 sm:mt-8">
-                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+              {/* Tags & Action Row */}
+              <div className="relative z-10 pt-6 mt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-1.5">
                   {spotlight.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-lg text-xs font-mono"
-                      style={{ background: 'var(--color-rocera-surface)', color: 'var(--color-rocera-muted-2)' }}
-                    >
+                    <span key={tag} className="soft-pill font-mono text-[11px]">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-white/10">
-                  <Link
-                    href={`/portfolio/${spotlight.slug}`}
-                    className="btn-butter text-xs !py-2.5 !px-5"
-                  >
-                    Read Full Case Study
-                    <ArrowRight size={14} />
-                  </Link>
-                  {spotlight.demo && (
-                    <a href={spotlight.demo} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl border border-white/10 hover:bg-white/5 transition-colors">
-                      <ExternalLink size={16} style={{ color: 'var(--color-rocera-muted)' }} />
+                <div className="flex items-center gap-3">
+                  {spotlight.github && (
+                    <a
+                      href={spotlight.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
+                      title="View GitHub Repository"
+                    >
+                      <GitBranch size={16} />
                     </a>
                   )}
-                  {spotlight.github && (
-                    <a href={spotlight.github} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl border border-white/10 hover:bg-white/5 transition-colors">
-                      <GitBranch size={16} style={{ color: 'var(--color-rocera-muted)' }} />
+                  {spotlight.demo && (
+                    <a
+                      href={spotlight.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-butter !py-2 !px-4 text-xs"
+                    >
+                      Live Demo <ExternalLink size={13} />
                     </a>
                   )}
                 </div>
@@ -148,124 +133,137 @@ export function FeaturedPortfolio({ projects }: { projects: Project[] }) {
             </article>
           )}
 
-          {/* Bento Card 2 — Vertical Highlight Card */}
+          {/* Second Project */}
           {second && (
-            <article
-              className="group relative rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-between transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'var(--color-rocera-bg)',
-                border: '1px solid var(--color-rocera-border)',
-              }}
-            >
+            <article className="soft-card group relative p-6 sm:p-8 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className="px-2.5 py-1 rounded-full text-xs font-mono"
-                    style={{
-                      background: statusColors[second.status].bg,
-                      color: statusColors[second.status].text,
-                    }}
-                  >
-                    {statusColors[second.status].label}
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <span className="soft-pill font-mono text-xs">
+                    PROJECT
                   </span>
+
                   {second.stargazersCount !== undefined && (
-                    <div className="flex items-center gap-1 text-xs font-mono text-[#80ded9]">
-                      <Star size={12} className="fill-[#80ded9]" />
+                    <div className="soft-pill font-mono text-xs text-[#3B82F6]">
+                      <Star size={13} className="fill-[#3B82F6]" />
                       <span>{second.stargazersCount}</span>
                     </div>
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
+                <h3
+                  className="text-xl font-bold mb-3 group-hover:text-[#3B82F6] transition-colors"
+                  style={{ color: 'var(--color-cencera-text)' }}
+                >
                   {second.title}
                 </h3>
-                <p className="text-xs sm:text-sm leading-relaxed mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
+
+                <p
+                  className="text-xs sm:text-sm leading-relaxed mb-6"
+                  style={{ color: 'var(--color-cencera-muted-2)' }}
+                >
                   {second.description}
                 </p>
               </div>
 
               <div>
                 <div className="flex flex-wrap gap-1.5 mb-6">
-                  {second.tags.slice(0, 4).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono"
-                      style={{ background: 'var(--color-rocera-surface-2)', color: 'var(--color-rocera-muted-2)' }}
-                    >
+                  {second.tags.map((tag) => (
+                    <span key={tag} className="soft-pill font-mono text-[11px]">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="flex items-center justify-between pt-4 border-t border-white/5">
                   <Link
                     href={`/portfolio/${second.slug}`}
-                    className="btn-butter-secondary flex-1 text-center text-xs !py-2"
+                    className="text-xs font-semibold text-[#3B82F6] hover:underline"
                   >
-                    Read Case Study
+                    Read details &rarr;
                   </Link>
-                  {second.github && (
-                    <a href={second.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg border border-white/10 hover:bg-white/5">
-                      <GitBranch size={15} style={{ color: 'var(--color-rocera-muted)' }} />
-                    </a>
-                  )}
+
+                  <div className="flex items-center gap-2">
+                    {second.github && (
+                      <a
+                        href={second.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
+                        title="GitHub"
+                      >
+                        <GitBranch size={15} />
+                      </a>
+                    )}
+                    {second.demo && (
+                      <a
+                        href={second.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
+                        title="Demo"
+                      >
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </article>
           )}
 
-          {/* Bento Card 3 — Wide Project Banner Card */}
+          {/* Third Project */}
           {third && (
-            <article
-              className="group relative rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 lg:col-span-3 transition-all duration-500 hover:scale-[1.01]"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, var(--color-rocera-bg) 100%)',
-                border: '1px solid var(--color-rocera-border-2)',
-              }}
-            >
-              <div className="max-w-2xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <span
-                    className="px-2.5 py-0.5 rounded-full text-xs font-mono"
-                    style={{
-                      background: statusColors[third.status].bg,
-                      color: statusColors[third.status].text,
-                    }}
-                  >
-                    {statusColors[third.status].label}
-                  </span>
-                  <span className="text-xs font-mono text-gray-400">{new Date(third.date).getFullYear()}</span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-[#80ded9] transition-colors" style={{ color: 'var(--color-rocera-text)' }}>
-                  {third.title}
-                </h3>
-                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
-                  {third.description}
-                </p>
-              </div>
+            <article className="soft-card group relative p-6 sm:p-8 flex flex-col justify-between lg:col-span-3">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="soft-pill font-mono text-xs">
+                      CASE STUDY
+                    </span>
+                    {third.stargazersCount !== undefined && (
+                      <div className="soft-pill font-mono text-xs text-[#3B82F6]">
+                        <Star size={13} className="fill-[#3B82F6]" />
+                        <span>{third.stargazersCount} Stars</span>
+                      </div>
+                    )}
+                  </div>
 
-              <div className="flex items-center gap-3 shrink-0">
-                <Link href={`/portfolio/${third.slug}`} className="btn-butter text-xs !py-2.5 !px-6">
-                  Read Case Study
-                </Link>
-                {third.github && (
-                  <a href={third.github} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl border border-white/10 hover:bg-white/5">
-                    <GitBranch size={16} style={{ color: 'var(--color-rocera-muted)' }} />
-                  </a>
-                )}
+                  <h3
+                    className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-[#3B82F6] transition-colors"
+                    style={{ color: 'var(--color-cencera-text)' }}
+                  >
+                    {third.title}
+                  </h3>
+
+                  <p
+                    className="text-xs sm:text-sm leading-relaxed max-w-3xl"
+                    style={{ color: 'var(--color-cencera-muted-2)' }}
+                  >
+                    {third.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
+                  <div className="flex flex-wrap gap-1.5">
+                    {third.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="soft-pill font-mono text-[11px]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={`/portfolio/${third.slug}`}
+                    className="btn-butter-secondary !py-2.5 !px-5 text-xs whitespace-nowrap"
+                  >
+                    View Project Case Study
+                  </Link>
+                </div>
               </div>
             </article>
           )}
         </div>
       </div>
-
-      {/* Bottom Fade Gradient into Next Section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 0%, var(--color-rocera-bg) 100%)',
-        }}
-      />
     </section>
   )
 }

@@ -5,121 +5,98 @@ import Link from 'next/link'
 import { Search, ExternalLink, GitBranch, X, Star } from 'lucide-react'
 import type { Project } from '@/types/portfolio'
 
-const statusColors = {
-  completed: { bg: '#10b98115', text: '#10b981', label: 'Completed' },
-  'in-progress': { bg: '#f59e0b15', text: '#f59e0b', label: 'In Progress' },
-  archived: { bg: '#6b728015', text: '#6b7280', label: 'Archived' },
-}
-
 function ProjectCard({ project }: { project: Project }) {
-  const status = statusColors[project.status]
   const [imgError, setImgError] = useState(false)
 
   return (
-    <article
-      className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
-      style={{
-        background: 'var(--color-rocera-surface)',
-        border: '1px solid var(--color-rocera-border)',
-      }}
-    >
-      <div
-        className="h-44 sm:h-48 relative flex items-center justify-center overflow-hidden bg-black/40"
-        style={{
-          background: 'linear-gradient(135deg, var(--color-rocera-surface-2) 0%, var(--color-rocera-bg) 100%)',
-        }}
-      >
-        {project.image && !imgError ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            onError={() => setImgError(true)}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <>
-            <div className="absolute inset-0 grid-pattern opacity-20" />
-            <span className="text-4xl font-extrabold text-gradient opacity-25 group-hover:opacity-50 transition-opacity">
+    <article className="soft-card group overflow-hidden flex flex-col justify-between p-5 sm:p-6">
+      <div>
+        <div className="h-44 sm:h-48 relative rounded-xl flex items-center justify-center overflow-hidden soft-card-inset mb-5">
+          {project.image && !imgError ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              onError={() => setImgError(true)}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <span className="text-4xl font-black text-gradient opacity-60 group-hover:opacity-90 transition-opacity">
               {project.title.slice(0, 2).toUpperCase()}
             </span>
-          </>
-        )}
+          )}
 
-        {/* GitHub Stars pill badge */}
-        {project.stargazersCount !== undefined && (
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-black/60 backdrop-blur border border-white/10 text-amber-400">
-            <Star size={11} className="fill-amber-400" />
-            <span>{project.stargazersCount}</span>
-          </div>
-        )}
-      </div>
+          {project.stargazersCount !== undefined && (
+            <div className="absolute top-3 right-3 z-10">
+              <span className="soft-pill font-mono text-[11px] text-[#2563EB]">
+                <Star size={12} className="fill-[#2563EB]" />
+                <span>{project.stargazersCount}</span>
+              </span>
+            </div>
+          )}
+        </div>
 
-      <div className="p-5 flex flex-col gap-3 flex-1">
-        <div className="flex items-center justify-between">
-          <span
-            className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium"
-            style={{ background: status.bg, color: status.text }}
-          >
-            {status.label}
+        <div className="flex items-center justify-between mb-3">
+          <span className="soft-pill font-mono text-[11px] uppercase">
+            {project.status}
           </span>
-          <span className="text-xs font-mono" style={{ color: 'var(--color-rocera-muted)' }}>
+          <span className="text-xs font-mono text-slate-500">
             {new Date(project.date).getFullYear()}
           </span>
         </div>
 
-        <div>
-          <h2
-            className="text-base sm:text-lg font-bold mb-1.5 group-hover:text-amber-300 transition-colors"
-            style={{ color: 'var(--color-rocera-text)' }}
-          >
-            {project.title}
-          </h2>
-          <p className="text-xs sm:text-sm leading-relaxed line-clamp-2" style={{ color: 'var(--color-rocera-muted)' }}>
-            {project.description}
-          </p>
-        </div>
+        <h2
+          className="text-base sm:text-lg font-bold mb-2 group-hover:text-[#2563EB] transition-colors"
+          style={{ color: 'var(--color-cencera-text)' }}
+        >
+          {project.title}
+        </h2>
+        <p className="text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4" style={{ color: 'var(--color-cencera-muted-2)' }}>
+          {project.description}
+        </p>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mb-6">
           {project.tags.slice(0, 4).map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-0.5 rounded text-[11px] font-mono"
-              style={{ background: 'var(--color-rocera-surface-2)', color: 'var(--color-rocera-muted-2)' }}
-            >
+            <span key={tag} className="soft-pill font-mono text-[11px]">
               {tag}
             </span>
           ))}
           {project.tags.length > 4 && (
-            <span
-              className="px-2 py-0.5 rounded text-[11px] font-mono"
-              style={{ background: 'var(--color-rocera-surface-2)', color: 'var(--color-rocera-muted)' }}
-            >
+            <span key="more" className="soft-pill font-mono text-[11px]">
               +{project.tags.length - 4}
             </span>
           )}
         </div>
+      </div>
 
-        <div
-          className="flex items-center gap-3 pt-3"
-          style={{ borderTop: '1px solid var(--color-rocera-border)' }}
+      <div className="flex items-center gap-2 pt-4 border-t border-slate-200">
+        <Link
+          href={`/portfolio/${project.slug}`}
+          className="btn-butter-secondary flex-1 text-center text-xs !py-2 !px-4 font-semibold"
         >
-          <Link
-            href={`/portfolio/${project.slug}`}
-            className="btn-butter-secondary flex-1 text-center text-xs !py-2"
+          Read Case Study
+        </Link>
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Demo"
+            className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
           >
-            Read Case Study
-          </Link>
-          {project.demo && (
-            <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Demo" className="p-2 rounded-lg border border-white/10 hover:bg-white/5">
-              <ExternalLink size={14} style={{ color: 'var(--color-rocera-muted)' }} />
-            </a>
-          )}
-          {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="p-2 rounded-lg border border-white/10 hover:bg-white/5">
-              <GitBranch size={14} style={{ color: 'var(--color-rocera-muted)' }} />
-            </a>
-          )}
-        </div>
+            <ExternalLink size={14} />
+          </a>
+        )}
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Repository"
+            className="soft-pill !p-2 text-slate-600 hover:text-[#2563EB]"
+          >
+            <GitBranch size={14} />
+          </a>
+        )}
       </div>
     </article>
   )
@@ -147,26 +124,19 @@ export function PortfolioClient({ projects, tags }: { projects: Project[]; tags:
       {/* Search + filters */}
       <div className="flex flex-col gap-4 mb-10">
         {/* Search */}
-        <div
-          className="flex items-center gap-2 px-4 py-3 rounded-xl w-full sm:max-w-md"
-          style={{
-            background: 'var(--color-rocera-surface)',
-            border: '1px solid var(--color-rocera-border)',
-          }}
-        >
-          <Search size={16} style={{ color: 'var(--color-rocera-muted)' }} />
+        <div className="soft-card-inset flex items-center gap-3 px-4 py-3 w-full sm:max-w-md">
+          <Search size={16} className="text-[#2563EB] shrink-0" />
           <input
             id="portfolio-search"
             type="text"
-            placeholder="Search projects by name or technology..."
+            placeholder="Search projects by name or tech..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="bg-transparent outline-none text-sm w-full"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="bg-transparent outline-none text-xs sm:text-sm w-full text-slate-900 placeholder-slate-500 font-medium"
           />
           {search && (
             <button onClick={() => setSearch('')} aria-label="Clear search">
-              <X size={14} style={{ color: 'var(--color-rocera-muted)' }} />
+              <X size={14} className="text-slate-400 hover:text-slate-800" />
             </button>
           )}
         </div>
@@ -174,63 +144,60 @@ export function PortfolioClient({ projects, tags }: { projects: Project[]; tags:
         {/* Status filter */}
         {['completed', 'in-progress', 'archived'].some(s => projects.some(p => p.status === s)) && (
           <div className="flex flex-wrap gap-2">
-            {['completed', 'in-progress', 'archived'].map((status) => (
-              <button
-                key={status}
-                id={`filter-status-${status}`}
-                onClick={() => setActiveStatus(activeStatus === status ? null : status)}
-                className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 capitalize"
-                style={{
-                  background:
-                    activeStatus === status
-                      ? 'var(--color-rocera-accent)'
-                      : 'var(--color-rocera-surface)',
-                  color:
-                    activeStatus === status
-                      ? '#fff'
-                      : 'var(--color-rocera-muted)',
-                  border: '1px solid var(--color-rocera-border)',
-                }}
-              >
-                {status.replace('-', ' ')}
-              </button>
-            ))}
+            {['completed', 'in-progress', 'archived'].map((status) => {
+              const isActive = activeStatus === status
+              return (
+                <button
+                  key={status}
+                  id={`filter-status-${status}`}
+                  onClick={() => setActiveStatus(isActive ? null : status)}
+                  className="soft-pill capitalize text-xs !py-1.5 !px-3.5"
+                  style={
+                    isActive
+                      ? {
+                          background: 'linear-gradient(145deg, #2563EB 0%, #1D4ED8 100%)',
+                          color: '#FFFFFF',
+                        }
+                      : {}
+                  }
+                >
+                  {status.replace('-', ' ')}
+                </button>
+              )
+            })}
           </div>
         )}
 
         {/* Tag filter */}
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 sm:gap-2">
-            {tags.slice(0, 16).map((tag) => (
-              <button
-                key={tag}
-                id={`filter-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                className="px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium transition-all duration-200"
-                style={{
-                  background:
-                    activeTag === tag
-                      ? 'color-mix(in srgb, var(--color-rocera-accent) 15%, transparent)'
-                      : 'var(--color-rocera-surface)',
-                  color:
-                    activeTag === tag
-                      ? 'var(--color-rocera-accent)'
-                      : 'var(--color-rocera-muted)',
-                  border:
-                    activeTag === tag
-                      ? '1px solid var(--color-rocera-accent)'
-                      : '1px solid var(--color-rocera-border)',
-                }}
-              >
-                {tag}
-              </button>
-            ))}
+            {tags.slice(0, 16).map((tag) => {
+              const isActive = activeTag === tag
+              return (
+                <button
+                  key={tag}
+                  id={`filter-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={() => setActiveTag(isActive ? null : tag)}
+                  className="soft-pill font-mono text-[11px] sm:text-xs !py-1 !px-3"
+                  style={
+                    isActive
+                      ? {
+                          background: 'linear-gradient(145deg, #2563EB 0%, #1D4ED8 100%)',
+                          color: '#FFFFFF',
+                        }
+                      : {}
+                  }
+                >
+                  {tag}
+                </button>
+              )
+            })}
           </div>
         )}
       </div>
 
       {/* Count */}
-      <p className="text-xs sm:text-sm mb-6" style={{ color: 'var(--color-rocera-muted)' }}>
+      <p className="text-xs sm:text-sm mb-6 text-slate-600 font-mono font-medium">
         Showing {filtered.length} of {projects.length} projects
       </p>
 
@@ -242,13 +209,12 @@ export function PortfolioClient({ projects, tags }: { projects: Project[]; tags:
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 sm:py-20 rounded-2xl border border-white/10" style={{ background: 'var(--color-rocera-surface)' }}>
-          <p className="text-base sm:text-lg" style={{ color: 'var(--color-rocera-muted)' }}>
+        <div className="soft-card text-center py-16 sm:py-20 p-8">
+          <p className="text-base sm:text-lg text-slate-700 font-semibold">
             No projects match your search or filters.
           </p>
           <button
-            className="mt-4 text-xs sm:text-sm underline font-semibold"
-            style={{ color: 'var(--color-rocera-accent)' }}
+            className="mt-4 soft-pill text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8]"
             onClick={() => { setSearch(''); setActiveTag(null); setActiveStatus(null) }}
           >
             Clear all filters

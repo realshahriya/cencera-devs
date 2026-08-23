@@ -2,7 +2,7 @@ import localHackathons from '@/content/hackathons.json'
 
 const GITHUB_API = 'https://api.github.com'
 const GITHUB_USER = process.env.GITHUB_USER || 'realshahriya'
-export const GITHUB_PROJECTS_REPO = process.env.GITHUB_PROJECTS_REPO || `${GITHUB_USER}/rocera-projects`
+export const GITHUB_PROJECTS_REPO = process.env.GITHUB_PROJECTS_REPO || `${GITHUB_USER}/cencera-projects`
 
 export interface HackathonAward {
   place: string
@@ -28,7 +28,7 @@ export interface Hackathon {
 }
 
 /**
- * Fetches hackathons data from realshahriya/rocera-projects repository under /hackathons/ directory
+ * Fetches hackathons data from realshahriya/cencera-projects repository under /hackathons/ directory
  */
 export async function getDedicatedHackathons(): Promise<Hackathon[]> {
   // 1. Try fetching /hackathons/hackathons.json from raw GitHub usercontent
@@ -54,7 +54,7 @@ export async function getDedicatedHackathons(): Promise<Hackathon[]> {
     const res = await fetch(`${GITHUB_API}/repos/${GITHUB_PROJECTS_REPO}/contents/hackathons`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'RoceraApp/1.0',
+        'User-Agent': 'cenceraApp/1.0',
         ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
       },
       next: { revalidate: 60 },

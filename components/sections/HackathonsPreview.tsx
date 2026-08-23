@@ -11,20 +11,20 @@ export function HackathonsPreview() {
     <section
       id="hackathons-preview"
       className="section-padding relative overflow-hidden"
-      style={{ background: 'var(--color-rocera-surface)' }}
+      style={{ background: 'var(--color-cencera-surface)' }}
     >
-      <div className="container-rocera relative z-10">
+      <div className="container-cencera relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-3"
-              style={{ color: 'var(--color-rocera-accent)' }}
+              style={{ color: 'var(--color-cencera-accent)' }}
             >
               Competition
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold tracking-tight"
-              style={{ color: 'var(--color-rocera-text)' }}
+              style={{ color: 'var(--color-cencera-text)' }}
             >
               Hackathon Record
             </h2>
@@ -32,7 +32,7 @@ export function HackathonsPreview() {
           <Link
             href="/hackathons"
             className="group flex items-center gap-1.5 text-sm font-medium shrink-0"
-            style={{ color: 'var(--color-rocera-accent)' }}
+            style={{ color: 'var(--color-cencera-accent)' }}
           >
             View full record
             <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
@@ -45,22 +45,22 @@ export function HackathonsPreview() {
               key={h.id}
               className="flex flex-col md:flex-row md:items-center gap-4 p-5 rounded-xl transition-all duration-200"
               style={{
-                background: 'var(--color-rocera-bg)',
-                border: '1px solid var(--color-rocera-border)',
+                background: 'var(--color-cencera-bg)',
+                border: '1px solid var(--color-cencera-border)',
               }}
               onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor =
-                  'var(--color-rocera-border-2)'
+                ; (e.currentTarget as HTMLElement).style.borderColor =
+                  'var(--color-cencera-border-2)'
               }}
               onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor =
-                  'var(--color-rocera-border)'
+                ; (e.currentTarget as HTMLElement).style.borderColor =
+                  'var(--color-cencera-border)'
               }}
             >
               {/* Index */}
               <span
                 className="text-4xl font-bold tabular-nums opacity-20 shrink-0"
-                style={{ color: 'var(--color-rocera-text)' }}
+                style={{ color: 'var(--color-cencera-text)' }}
               >
                 0{i + 1}
               </span>
@@ -70,15 +70,15 @@ export function HackathonsPreview() {
                 <div className="flex flex-wrap items-center gap-2 mb-1">
                   <h3
                     className="text-base font-semibold"
-                    style={{ color: 'var(--color-rocera-text)' }}
+                    style={{ color: 'var(--color-cencera-text)' }}
                   >
                     {h.name}
                   </h3>
-                  <span className="text-xs" style={{ color: 'var(--color-rocera-muted)' }}>
+                  <span className="text-xs" style={{ color: 'var(--color-cencera-muted)' }}>
                     · {h.location}
                   </span>
                 </div>
-                <p className="text-sm" style={{ color: 'var(--color-rocera-muted)' }}>
+                <p className="text-sm" style={{ color: 'var(--color-cencera-muted)' }}>
                   {h.description.slice(0, 120)}...
                 </p>
               </div>
@@ -87,19 +87,19 @@ export function HackathonsPreview() {
               <div
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg shrink-0"
                 style={{
-                  background: 'color-mix(in srgb, var(--color-rocera-gold) 10%, transparent)',
+                  background: 'color-mix(in srgb, var(--color-cencera-gold) 10%, transparent)',
                 }}
               >
-                <Trophy size={14} style={{ color: 'var(--color-rocera-gold)' }} />
+                <Trophy size={14} style={{ color: 'var(--color-cencera-gold)' }} />
                 <span
                   className="text-xs font-medium"
-                  style={{ color: 'var(--color-rocera-gold)' }}
+                  style={{ color: 'var(--color-cencera-gold)' }}
                 >
                   {h.awards[0]?.place === '1st'
                     ? '1st Place'
                     : h.awards[0]?.place === '2nd'
-                    ? '2nd Place'
-                    : 'Finalist'}
+                      ? '2nd Place'
+                      : 'Finalist'}
                 </span>
               </div>
             </article>
@@ -111,7 +111,7 @@ export function HackathonsPreview() {
       <div
         className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, var(--color-rocera-bg) 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, var(--color-cencera-bg) 100%)',
         }}
       />
     </section>

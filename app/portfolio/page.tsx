@@ -1,11 +1,12 @@
 import { getAllProjects, getAllTags } from '@/lib/portfolio'
 import { PortfolioClient } from '@/components/portfolio/PortfolioClient'
+import { FolderGit2 } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
+  title: 'Portfolio — Cencera',
   description:
-    'Explore Rocera\'s portfolio — production AI systems, DeFi protocols, SaaS platforms, and open-source tools built with engineering excellence.',
+    'Explore Cencera\'s engineering portfolio — production AI systems, Web3 protocols, cloud infrastructure, and open-source tools.',
 }
 
 export default async function PortfolioPage() {
@@ -13,23 +14,21 @@ export default async function PortfolioPage() {
   const tags = getAllTags(projects)
 
   return (
-    <div className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ background: 'var(--color-rocera-bg)' }}>
-      <div className="container-rocera">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-32 px-4 sm:px-6" style={{ background: 'var(--color-cencera-bg)' }}>
+      <div className="container-cencera">
         {/* Header */}
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: 'var(--color-rocera-accent)' }}
-          >
-            Our Work
-          </p>
+          <div className="section-tag">
+            <FolderGit2 size={14} className="text-[#3B82F6]" />
+            <span>OUR WORK //</span>
+          </div>
           <h1
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
-            style={{ color: 'var(--color-rocera-text)' }}
+            className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4"
+            style={{ color: 'var(--color-cencera-text)' }}
           >
             Engineering Portfolio
           </h1>
-          <p className="text-sm sm:text-lg leading-relaxed" style={{ color: 'var(--color-rocera-muted-2)' }}>
+          <p className="text-sm sm:text-lg leading-relaxed" style={{ color: 'var(--color-cencera-muted-2)' }}>
             Production systems, open-source tools, and research prototypes built with engineering excellence.
           </p>
         </div>

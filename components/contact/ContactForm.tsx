@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { submitContact } from '@/lib/actions/contact'
-import { Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
+import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
 
 const budgetOptions = [
   'Under $5K',
@@ -48,56 +48,53 @@ export function ContactForm() {
   }
 
   const inputStyle = {
-    background: 'var(--color-rocera-surface-2)',
-    border: '1px solid var(--color-rocera-border)',
-    color: 'var(--color-rocera-text)',
-    borderRadius: '12px',
-    padding: '12px 16px',
-    fontSize: '15px',
+    background: '#F1F5F9',
+    border: '1px solid rgba(203, 213, 225, 0.9)',
+    boxShadow: 'inset 2px 3px 6px rgba(15, 23, 42, 0.05)',
+    color: '#0F172A',
+    borderRadius: '14px',
+    padding: '14px 18px',
+    fontSize: '14px',
     width: '100%',
     outline: 'none',
-    transition: 'border-color 0.2s',
+    transition: 'all 0.25s ease',
   }
 
   const labelStyle = {
     display: 'block',
-    fontSize: '12px',
-    fontWeight: '600',
-    marginBottom: '6px',
-    color: 'var(--color-rocera-muted-2)',
+    fontSize: '11px',
+    fontWeight: '700',
+    letterSpacing: '0.12em',
+    marginBottom: '8px',
+    color: '#334155',
   }
 
   return (
-    <div
-      className="p-5 sm:p-8 rounded-3xl"
-      style={{
-        background: 'var(--color-rocera-surface)',
-        border: '1px solid var(--color-rocera-border-2)',
-      }}
-    >
+    <div className="soft-card p-6 sm:p-10">
       {status === 'success' ? (
         <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
-          <CheckCircle size={48} style={{ color: 'var(--color-rocera-success)' }} />
+          <div className="soft-icon-box !w-16 !h-16 mb-2">
+            <CheckCircle2 size={36} className="text-[#2563EB]" />
+          </div>
           <h2
             className="text-xl sm:text-2xl font-bold"
-            style={{ color: 'var(--color-rocera-text)' }}
+            style={{ color: 'var(--color-cencera-text)' }}
           >
-            Message Sent!
+            Message Sent Successfully!
           </h2>
-          <p className="text-sm" style={{ color: 'var(--color-rocera-muted)' }}>
+          <p className="text-sm" style={{ color: 'var(--color-cencera-muted)' }}>
             We&apos;ll get back to you within 24 hours.
           </p>
           <button
             onClick={() => setStatus('idle')}
-            className="mt-4 text-sm font-semibold underline"
-            style={{ color: 'var(--color-rocera-accent)' }}
+            className="mt-4 soft-pill font-mono text-xs text-[#2563EB] hover:text-[#1D4ED8]"
           >
             Send another message
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          {/* Honeypot — hidden from real users */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          {/* Honeypot */}
           <input
             type="text"
             name="honeypot"
@@ -106,12 +103,11 @@ export function ContactForm() {
             style={{ display: 'none' }}
             tabIndex={-1}
             autoComplete="off"
-            aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="contact-name" style={labelStyle}>NAME</label>
+              <label htmlFor="contact-name" style={labelStyle}>YOUR NAME</label>
               <input
                 id="contact-name"
                 type="text"
@@ -121,12 +117,18 @@ export function ContactForm() {
                 value={form.name}
                 onChange={handleChange}
                 style={inputStyle}
-                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
-                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
+                onFocus={(e) => {
+                  ;(e.target as HTMLElement).style.borderColor = 'rgba(37, 99, 235, 0.6)'
+                  ;(e.target as HTMLElement).style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.15)'
+                }}
+                onBlur={(e) => {
+                  ;(e.target as HTMLElement).style.borderColor = 'rgba(203, 213, 225, 0.9)'
+                  ;(e.target as HTMLElement).style.boxShadow = 'inset 2px 3px 6px rgba(15, 23, 42, 0.05)'
+                }}
               />
             </div>
             <div>
-              <label htmlFor="contact-email" style={labelStyle}>EMAIL</label>
+              <label htmlFor="contact-email" style={labelStyle}>EMAIL ADDRESS</label>
               <input
                 id="contact-email"
                 type="email"
@@ -136,14 +138,20 @@ export function ContactForm() {
                 value={form.email}
                 onChange={handleChange}
                 style={inputStyle}
-                onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
-                onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
+                onFocus={(e) => {
+                  ;(e.target as HTMLElement).style.borderColor = 'rgba(37, 99, 235, 0.6)'
+                  ;(e.target as HTMLElement).style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.15)'
+                }}
+                onBlur={(e) => {
+                  ;(e.target as HTMLElement).style.borderColor = 'rgba(203, 213, 225, 0.9)'
+                  ;(e.target as HTMLElement).style.boxShadow = 'inset 2px 3px 6px rgba(15, 23, 42, 0.05)'
+                }}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="contact-subject" style={labelStyle}>SUBJECT</label>
+            <label htmlFor="contact-subject" style={labelStyle}>SUBJECT / PROJECT TYPE</label>
             <input
               id="contact-subject"
               type="text"
@@ -153,25 +161,35 @@ export function ContactForm() {
               value={form.subject}
               onChange={handleChange}
               style={inputStyle}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
+              onFocus={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(37, 99, 235, 0.6)'
+                ;(e.target as HTMLElement).style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.15)'
+              }}
+              onBlur={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(203, 213, 225, 0.9)'
+                ;(e.target as HTMLElement).style.boxShadow = 'inset 2px 3px 6px rgba(15, 23, 42, 0.05)'
+              }}
             />
           </div>
 
           <div>
-            <label htmlFor="contact-budget" style={labelStyle}>BUDGET RANGE</label>
+            <label htmlFor="contact-budget" style={labelStyle}>ESTIMATED BUDGET RANGE</label>
             <select
               id="contact-budget"
               name="budget"
               value={form.budget}
               onChange={handleChange}
               style={{ ...inputStyle, cursor: 'pointer' }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
+              onFocus={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(37, 99, 235, 0.6)'
+              }}
+              onBlur={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(203, 213, 225, 0.9)'
+              }}
             >
               <option value="">Select a range...</option>
               {budgetOptions.map((opt) => (
-                <option key={opt} value={opt}>
+                <option key={opt} value={opt} style={{ background: '#FFFFFF', color: '#0F172A' }}>
                   {opt}
                 </option>
               ))}
@@ -179,50 +197,49 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="contact-message" style={labelStyle}>MESSAGE</label>
+            <label htmlFor="contact-message" style={labelStyle}>PROJECT DETAILS</label>
             <textarea
               id="contact-message"
               name="message"
               required
               rows={5}
-              placeholder="Tell us about your project, timeline, and any technical constraints..."
+              placeholder="Describe your goals, tech stack preferences, timeline, or requirements..."
               value={form.message}
               onChange={handleChange}
-              style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
-              onFocus={(e) => ((e.target as HTMLElement).style.borderColor = '#92DCE5')}
-              onBlur={(e) => ((e.target as HTMLElement).style.borderColor = 'var(--color-cencera-border)')}
+              style={{ ...inputStyle, resize: 'vertical' }}
+              onFocus={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(37, 99, 235, 0.6)'
+                ;(e.target as HTMLElement).style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.15)'
+              }}
+              onBlur={(e) => {
+                ;(e.target as HTMLElement).style.borderColor = 'rgba(203, 213, 225, 0.9)'
+                ;(e.target as HTMLElement).style.boxShadow = 'inset 2px 3px 6px rgba(15, 23, 42, 0.05)'
+              }}
             />
           </div>
 
           {status === 'error' && (
-            <div
-              className="flex items-center gap-2 p-3.5 rounded-xl text-xs sm:text-sm"
-              style={{
-                background: '#ef444415',
-                border: '1px solid #ef444430',
-                color: '#f87171',
-              }}
-            >
-              <AlertCircle size={14} className="shrink-0" />
-              {errorMessage}
+            <div className="flex items-center gap-2 p-3.5 rounded-xl bg-red-50 text-red-600 border border-red-200 text-xs font-semibold">
+              <AlertCircle size={16} className="shrink-0" />
+              <span>{errorMessage}</span>
             </div>
           )}
 
           <button
-            id="contact-submit"
             type="submit"
+            id="contact-submit"
             disabled={status === 'loading'}
-            className="btn-butter w-full !py-3.5 text-sm disabled:opacity-60"
+            className="btn-butter w-full font-bold py-4 text-sm uppercase tracking-wider flex items-center justify-center gap-2"
           >
             {status === 'loading' ? (
               <>
                 <Loader2 size={16} className="animate-spin" />
-                Sending...
+                Submitting Inquiry...
               </>
             ) : (
               <>
                 <Send size={16} />
-                Send Message //
+                Send Project Inquiry //
               </>
             )}
           </button>
