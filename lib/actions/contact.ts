@@ -140,7 +140,7 @@ export async function submitContact(
       `💬 <b>Project Details:</b>\n` +
       `<blockquote>${escapeHtml(message)}</blockquote>\n\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-      `🌐 <b>Source:</b> <code>cencera.xyz/contact</code>\n` +
+      `🌐 <b>Source:</b> <code>devs.cencera.xyz/contact</code>\n` +
       `📅 <b>Submitted At:</b> <code>${escapeHtml(formattedDate)}</code>`
 
     let sent = await sendTelegramMessage(tgBotToken, tgChatId, tgTopicId, tgText)
