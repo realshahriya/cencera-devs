@@ -18,10 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600', '700'],
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://devs.cencera.xyz'
+const SITE_URL = 'https://devs.cencera.xyz'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'CENCERA DEVS — Software Engineering Studio & Agency',
     template: '%s | Cencera Devs',
@@ -40,25 +40,25 @@ export const metadata: Metadata = {
     'smart contract audit agency',
     'DeFi development studio',
   ],
-  authors: [{ name: 'CENCERA DEVS', url: siteUrl }],
+  authors: [{ name: 'CENCERA DEVS', url: SITE_URL }],
   creator: 'CENCERA DEVS',
   publisher: 'CENCERA DEVS',
   category: 'technology',
   alternates: {
-    canonical: siteUrl,
+    canonical: SITE_URL,
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: siteUrl,
+    url: SITE_URL,
     siteName: 'CENCERA DEVS',
     title: 'CENCERA DEVS — Software Engineering Studio & Agency',
     description:
       'Elite developer agency specializing in Full Stack Web Engineering, AI Systems, Web3 Protocols, and Custom Software Development.',
     images: [
       {
-        url: `${siteUrl}/og-image.png`,
-        secureUrl: `${siteUrl}/og-image.png`,
+        url: `${SITE_URL}/og-image.png`,
+        secureUrl: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         type: 'image/png',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CENCERA DEVS — Software Engineering Studio & Agency',
     description: 'Elite developer agency specializing in Full Stack Web Engineering, AI Systems, Web3 Protocols, and Custom Software Development.',
-    images: [`${siteUrl}/og-image.png`],
+    images: [`${SITE_URL}/og-image.png`],
     creator: '@cencera',
   },
   robots: {
@@ -96,9 +96,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'CENCERA DEVS',
-  url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
-  image: `${siteUrl}/og-image.png`,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/og-image.png`,
   description: 'Elite software engineering studio & developer agency specializing in AI systems, Web3 protocols, cloud infrastructure, and custom software development.',
   priceRange: '$$$$',
   address: {
