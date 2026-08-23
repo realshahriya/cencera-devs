@@ -107,7 +107,7 @@ const jsonLd = {
   },
   sameAs: [
     'https://github.com/cencera',
-    'https://linkedin.com/company/cencera',
+    'https://linkedin.com/company/cenceraxyz',
     'https://discord.gg/cencera',
   ],
   knowsAbout: [

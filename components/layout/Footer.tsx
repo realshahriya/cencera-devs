@@ -24,7 +24,7 @@ const companyLinks = [
 
 const socialLinks = [
   { href: 'https://github.com/cencera', label: 'GitHub', Icon: GitBranch },
-  { href: 'https://linkedin.com/company/cencera', label: 'LinkedIn', Icon: Link2 },
+  { href: 'https://linkedin.com/company/cenceraxyz', label: 'LinkedIn', Icon: Link2 },
   { href: 'https://discord.gg/cencera', label: 'Discord', Icon: MessageSquare },
   { href: 'mailto:hello@cencera.xyz', label: 'Email', Icon: Mail },
 ]

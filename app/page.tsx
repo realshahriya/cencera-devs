@@ -33,7 +33,7 @@ export default async function HomePage() {
               'Premium technology agency specializing in Full Stack, AI, Blockchain, and Cloud engineering.',
             sameAs: [
               'https://github.com/cencera-dev',
-              'https://linkedin.com/company/cencera',
+              'https://linkedin.com/company/cenceraxyz',
             ],
           }),
         }}
