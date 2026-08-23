@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Menu, X, ArrowRight, Sparkles } from 'lucide-react'
-import { cenceraLogo } from '@/components/ui/cenceraLogo'
+import { CenceraLogo } from '@/components/ui/CenceraLogo'
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -45,7 +45,7 @@ export function Navbar() {
           className="pointer-events-auto flex items-center gap-2.5 px-4 py-2 rounded-full glass-capsule transition-all duration-300 group"
           aria-label="CENCERA DEVS Home"
         >
-          <cenceraLogo className="w-7 h-7 transition-transform duration-300 group-hover:scale-105" />
+          <CenceraLogo className="w-7 h-7 transition-transform duration-300 group-hover:scale-105" />
           <span className="font-black text-lg tracking-tighter font-sans uppercase text-gradient">
             CENCERA DEVS
           </span>

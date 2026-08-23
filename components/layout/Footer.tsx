@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { GitBranch, Link2, Mail, MessageSquare, ExternalLink } from 'lucide-react'
-import { cenceraLogo } from '@/components/ui/cenceraLogo'
+import { CenceraLogo } from '@/components/ui/CenceraLogo'
 
 const servicesLinks = [
   { href: '/services#defi-dapps', label: 'DeFi & dApps' },
@@ -45,7 +45,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="footer__left flex flex-col gap-4 max-w-sm">
             <Link href="/" className="flex items-center gap-2.5">
-              <cenceraLogo className="w-8 h-8" />
+              <CenceraLogo className="w-8 h-8" />
               <span className="font-black text-2xl tracking-tighter uppercase text-gradient">
                 Cencera Devs
               </span>

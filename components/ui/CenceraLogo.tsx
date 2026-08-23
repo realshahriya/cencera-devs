@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export function cenceraLogo({ className = 'w-8 h-8' }: { className?: string }) {
+export function CenceraLogo({ className = 'w-8 h-8' }: { className?: string }) {
   return (
     <Image
       src="/logo.png"
@@ -12,3 +12,5 @@ export function cenceraLogo({ className = 'w-8 h-8' }: { className?: string }) {
     />
   )
 }
+
+export const cenceraLogo = CenceraLogo

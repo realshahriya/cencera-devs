@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { ArrowRight, ShieldCheck, Cpu, Compass, HeartHandshake, Award, Sparkles } from 'lucide-react'
-import { cenceraLogo } from '@/components/ui/cenceraLogo'
+import { CenceraLogo } from '@/components/ui/CenceraLogo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About — Cencera',
-  description: 'Learn about CENCERA — our story, mission, and approach to trust & safety infrastructure engineering.',
+  title: 'About — Cencera Devs',
+  description: 'Learn about CENCERA DEVS — our story, mission, and approach to software engineering.',
 }
 
 export default function AboutPage() {
@@ -33,19 +33,19 @@ export default function AboutPage() {
               className="text-sm sm:text-lg leading-relaxed mb-4 sm:mb-6"
               style={{ color: 'var(--color-cencera-muted-2)' }}
             >
-              Cencera was founded on a simple conviction: the best software comes from teams who care deeply about their craft. We&apos;re not a typical agency — we&apos;re elite engineers who partner with high-stakes founders.
+              Cencera Devs was founded on a simple conviction: the best software comes from teams who care deeply about their craft. We&apos;re not a typical agency — we&apos;re elite engineers who partner with high-stakes founders.
             </p>
             <p
               className="text-xs sm:text-base leading-relaxed"
               style={{ color: 'var(--color-cencera-muted-2)' }}
             >
-              Our mission is to build resilient trust &amp; safety infrastructure and high-throughput systems that power the next generation of AI, Web3, and cloud infrastructure.
+              Our mission is to build resilient software infrastructure and high-throughput systems that power the next generation of AI, Web3, and cloud infrastructure.
             </p>
           </div>
 
           <div className="flex items-center justify-center">
             <div className="soft-card p-8 sm:p-14 w-full max-w-sm sm:max-w-none flex items-center justify-center">
-              <cenceraLogo className="w-28 sm:w-40 h-28 sm:h-40 opacity-90 transition-transform duration-500 hover:scale-105" />
+              <CenceraLogo className="w-28 sm:w-40 h-28 sm:h-40 opacity-90 transition-transform duration-500 hover:scale-105" />
             </div>
           </div>
         </div>
