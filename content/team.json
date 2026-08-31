@@ -6,7 +6,9 @@
     "photo": "/team/shahriya.png",
     "bio": "Full-stack developer, smart contract auditor, and technical project manager. Specializes in Web3 architecture, security audits, and high-concurrency systems.",
     "github": "https://github.com/realshahriya",
-    "linkedin": "https://linkedin.com/in/realshahriya-"
+    "linkedin": "https://linkedin.com/in/realshahriya-",
+    "email": "[EMAIL_ADDRESS]"
+
   },
   {
     "id": "member-2",
@@ -15,7 +17,8 @@
     "photo": "/team/sufian.png",
     "bio": "Crypto market analyst, Web3 researcher, and business development manager. Leads strategic exchange partnerships and market liquidity intelligence.",
     "github": "https://github.com/sufianweb3",
-    "linkedin": "https://www.linkedin.com/in/sufiancs"
+    "linkedin": "https://www.linkedin.com/in/sufiancs",
+    "email": "[EMAIL_ADDRESS]"
   },
   {
     "id": "member-3",
