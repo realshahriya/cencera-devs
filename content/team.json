@@ -6,27 +6,24 @@
     "photo": "/team/shahriya.png",
     "bio": "Full-stack developer, smart contract auditor, and technical project manager. Specializes in Web3 architecture, security audits, and high-concurrency systems.",
     "github": "https://github.com/realshahriya",
-    "linkedin": "https://linkedin.com/in/realshahriya-",
-    "email": "realshahriya@cencera.xyz"
+    "linkedin": "https://linkedin.com/in/realshahriya-"
   },
   {
     "id": "member-2",
     "name": "Abu Sufian",
     "role": "Researcher, Market Analyst & BD Manager",
-    "photo": "/team/sufian.jpg",
+    "photo": "/team/sufian.png",
     "bio": "Crypto market analyst, Web3 researcher, and business development manager. Leads strategic exchange partnerships and market liquidity intelligence.",
     "github": "https://github.com/sufianweb3",
-    "linkedin": "https://www.linkedin.com/in/sufiancs",
-    "email": "[EMAIL_ADDRESS]"
+    "linkedin": "https://www.linkedin.com/in/sufiancs"
   },
   {
     "id": "member-3",
     "name": "Peluumi Qazeem",
     "role": "Marketing Manager & Listing Specialist",
-    "photo": "/team/peluumi.jpg",
+    "photo": "/team/peluumi.png",
     "bio": "Web3 growth marketing strategist and token listing specialist. Manages CEX & DEX token launches, community campaigns, and partner relations.",
-    "linkedin": "https://www.linkedin.com/in/peluumi-qazeem-9b70a7203",
-    "email": "[EMAIL_ADDRESS]"
+    "linkedin": "https://www.linkedin.com/in/peluumi-qazeem-9b70a7203"
   },
   {
     "id": "member-4",
@@ -35,6 +32,6 @@
     "photo": "/team/prince.png",
     "bio": "Collaborator. Experienced in Web3 growth strategies and partnership management. Currently building high-performance AI & Web3 infrastructure at Cencera.",
     "github": "https://github.com/cencera",
-    "linkedin": "https://linkedin.com/company/cenceraxyz"
+    "linkedin": "https://www.linkedin.com/in/ryanbiconomy1"
   }
 ]
