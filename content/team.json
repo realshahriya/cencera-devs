@@ -3,7 +3,7 @@
     "id": "member-1",
     "name": "M. Shahriya Hossain",
     "role": "Developer, Auditor & Project Manager",
-    "photo": "/team/shahriya.jpg",
+    "photo": "/team/shahriya.png",
     "bio": "Full-stack developer, smart contract auditor, and technical project manager. Specializes in Web3 architecture, security audits, and high-concurrency systems.",
     "github": "https://github.com/realshahriya",
     "linkedin": "https://linkedin.com/in/realshahriya-",
@@ -32,7 +32,7 @@
     "id": "member-4",
     "name": "Core Engineer",
     "role": "Senior Infrastructure Engineer",
-    "photo": "/team/member-4.jpg",
+    "photo": "/team/prince.png",
     "bio": "Protocol developer and distributed cloud systems engineer specializing in zero-knowledge infrastructure and high-throughput backends.",
     "github": "https://github.com/cencera",
     "linkedin": "https://linkedin.com/company/cenceraxyz"
